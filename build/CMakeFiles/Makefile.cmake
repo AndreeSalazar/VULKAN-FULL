@@ -50,7 +50,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/UObjectDemo.dir/DependInfo.cmake"
-  "CMakeFiles/ThreadingDemo.dir/DependInfo.cmake"
   "CMakeFiles/VulkanCube.dir/DependInfo.cmake"
   )

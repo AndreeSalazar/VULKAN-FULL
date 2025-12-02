@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/home/andre/Documentos/VULKAN FULL" -I"/home/andre/Documentos/VULKAN FULL/Engine" -I"/home/andre/Documentos/VULKAN FULL/Engine/Core" -I"/home/andre/Documentos/VULKAN FULL/Engine/Core/Math" -I"/home/andre/Documentos/VULKAN FULL/Engine/Core/Object" -I"/home/andre/Documentos/VULKAN FULL/Engine/Core/Threading" -I"/home/andre/Documentos/VULKAN FULL/Engine/UI" -I"/home/andre/Documentos/VULKAN FULL/Engine/RHI" -I"/home/andre/Documentos/VULKAN FULL/Engine/Rendering" -I"/home/andre/Documentos/VULKAN FULL/Engine/Input" -I"/home/andre/Documentos/VULKAN FULL/Engine/Platform"
+CXX_INCLUDES = -I"/home/andre/Documentos/VULKAN FULL" -I"/home/andre/Documentos/VULKAN FULL/Engine" -I"/home/andre/Documentos/VULKAN FULL/Engine/Core" -I"/home/andre/Documentos/VULKAN FULL/Engine/Core/Math" -I"/home/andre/Documentos/VULKAN FULL/Engine/Core/Object" -I"/home/andre/Documentos/VULKAN FULL/Engine/Core/Threading" -I"/home/andre/Documentos/VULKAN FULL/Engine/UI" -I"/home/andre/Documentos/VULKAN FULL/Engine/UI/Scripting" -I"/home/andre/Documentos/VULKAN FULL/Engine/RHI" -I"/home/andre/Documentos/VULKAN FULL/Engine/Rendering" -I"/home/andre/Documentos/VULKAN FULL/Engine/Input" -I"/home/andre/Documentos/VULKAN FULL/Engine/Platform" -I"/home/andre/Documentos/VULKAN FULL/Engine/ThirdParty/imgui" -I"/home/andre/Documentos/VULKAN FULL/Engine/ThirdParty/imgui/backends" -I/usr/include/lua5.4 -I/usr/include/lua5.4/../src -I"/home/andre/Documentos/VULKAN FULL/Engine/ThirdParty/sol2/include"
 
 CXX_FLAGS = -std=gnu++17
 

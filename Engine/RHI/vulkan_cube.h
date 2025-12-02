@@ -49,12 +49,22 @@ public:
     void cleanup();
     void drawFrame();
     void waitDeviceIdle();
+    void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex); // Make public for ImGui
     
     // Update matrices from camera
     void UpdateMatrices(const float* viewMatrix, const float* projMatrix);
     
     // Mark framebuffer as resized (called from callback)
     void MarkFramebufferResized() { framebufferResized = true; }
+    
+    // Getters for ImGui integration
+    VkInstance GetInstance() const { return instance; }
+    VkPhysicalDevice GetPhysicalDevice() const { return physicalDevice; }
+    VkDevice GetDevice() const { return device; }
+    VkQueue GetGraphicsQueue() const { return graphicsQueue; }
+    VkRenderPass GetRenderPass() const { return renderPass; }
+    VkDescriptorPool GetDescriptorPool() const { return descriptorPool; }
+    uint32_t GetGraphicsQueueFamilyIndex() const;
 
 private:
     GLFWwindow* window;
@@ -128,7 +138,6 @@ private:
     void createDescriptorSets();
     void createCommandBuffers();
     void createSyncObjects();
-    void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
     void updateUniformBuffer(uint32_t currentImage);
     
     bool isDeviceSuitable(VkPhysicalDevice device);
@@ -141,6 +150,7 @@ private:
         }
     };
     QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
+    QueueFamilyIndices queueFamilyIndices;
     
     struct SwapChainSupportDetails {
         VkSurfaceCapabilitiesKHR capabilities;

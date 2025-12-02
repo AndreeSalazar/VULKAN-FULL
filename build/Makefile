@@ -117,32 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named UObjectDemo
-
-# Build rule for target.
-UObjectDemo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 UObjectDemo
-.PHONY : UObjectDemo
-
-# fast build rule for target.
-UObjectDemo/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/build
-.PHONY : UObjectDemo/fast
-
-#=============================================================================
-# Target rules for targets named ThreadingDemo
-
-# Build rule for target.
-ThreadingDemo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ThreadingDemo
-.PHONY : ThreadingDemo
-
-# fast build rule for target.
-ThreadingDemo/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/build
-.PHONY : ThreadingDemo/fast
-
-#=============================================================================
 # Target rules for targets named VulkanCube
 
 # Build rule for target.
@@ -160,8 +134,6 @@ Engine/Core/Log.o: Engine/Core/Log.cpp.o
 
 # target to build an object file
 Engine/Core/Log.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Log.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Log.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o
 .PHONY : Engine/Core/Log.cpp.o
 
@@ -170,8 +142,6 @@ Engine/Core/Log.i: Engine/Core/Log.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Log.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Log.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Log.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.i
 .PHONY : Engine/Core/Log.cpp.i
 
@@ -180,8 +150,6 @@ Engine/Core/Log.s: Engine/Core/Log.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Log.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Log.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Log.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.s
 .PHONY : Engine/Core/Log.cpp.s
 
@@ -190,8 +158,6 @@ Engine/Core/Math/Matrix.o: Engine/Core/Math/Matrix.cpp.o
 
 # target to build an object file
 Engine/Core/Math/Matrix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Matrix.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Matrix.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o
 .PHONY : Engine/Core/Math/Matrix.cpp.o
 
@@ -200,8 +166,6 @@ Engine/Core/Math/Matrix.i: Engine/Core/Math/Matrix.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Math/Matrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Matrix.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Matrix.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.i
 .PHONY : Engine/Core/Math/Matrix.cpp.i
 
@@ -210,8 +174,6 @@ Engine/Core/Math/Matrix.s: Engine/Core/Math/Matrix.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Math/Matrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Matrix.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Matrix.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.s
 .PHONY : Engine/Core/Math/Matrix.cpp.s
 
@@ -220,8 +182,6 @@ Engine/Core/Math/Quaternion.o: Engine/Core/Math/Quaternion.cpp.o
 
 # target to build an object file
 Engine/Core/Math/Quaternion.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Quaternion.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Quaternion.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o
 .PHONY : Engine/Core/Math/Quaternion.cpp.o
 
@@ -230,8 +190,6 @@ Engine/Core/Math/Quaternion.i: Engine/Core/Math/Quaternion.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Math/Quaternion.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Quaternion.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Quaternion.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.i
 .PHONY : Engine/Core/Math/Quaternion.cpp.i
 
@@ -240,8 +198,6 @@ Engine/Core/Math/Quaternion.s: Engine/Core/Math/Quaternion.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Math/Quaternion.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Quaternion.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Quaternion.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.s
 .PHONY : Engine/Core/Math/Quaternion.cpp.s
 
@@ -250,8 +206,6 @@ Engine/Core/Math/Transform.o: Engine/Core/Math/Transform.cpp.o
 
 # target to build an object file
 Engine/Core/Math/Transform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Transform.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Transform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o
 .PHONY : Engine/Core/Math/Transform.cpp.o
 
@@ -260,8 +214,6 @@ Engine/Core/Math/Transform.i: Engine/Core/Math/Transform.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Math/Transform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Transform.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Transform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.i
 .PHONY : Engine/Core/Math/Transform.cpp.i
 
@@ -270,8 +222,6 @@ Engine/Core/Math/Transform.s: Engine/Core/Math/Transform.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Math/Transform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Transform.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Transform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.s
 .PHONY : Engine/Core/Math/Transform.cpp.s
 
@@ -280,8 +230,6 @@ Engine/Core/Math/Vector.o: Engine/Core/Math/Vector.cpp.o
 
 # target to build an object file
 Engine/Core/Math/Vector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Vector.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Vector.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o
 .PHONY : Engine/Core/Math/Vector.cpp.o
 
@@ -290,8 +238,6 @@ Engine/Core/Math/Vector.i: Engine/Core/Math/Vector.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Math/Vector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Vector.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Vector.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.i
 .PHONY : Engine/Core/Math/Vector.cpp.i
 
@@ -300,8 +246,6 @@ Engine/Core/Math/Vector.s: Engine/Core/Math/Vector.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Math/Vector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Math/Vector.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Math/Vector.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.s
 .PHONY : Engine/Core/Math/Vector.cpp.s
 
@@ -310,8 +254,6 @@ Engine/Core/Object/UClass.o: Engine/Core/Object/UClass.cpp.o
 
 # target to build an object file
 Engine/Core/Object/UClass.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UClass.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UClass.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o
 .PHONY : Engine/Core/Object/UClass.cpp.o
 
@@ -320,8 +262,6 @@ Engine/Core/Object/UClass.i: Engine/Core/Object/UClass.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Object/UClass.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UClass.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UClass.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.i
 .PHONY : Engine/Core/Object/UClass.cpp.i
 
@@ -330,8 +270,6 @@ Engine/Core/Object/UClass.s: Engine/Core/Object/UClass.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Object/UClass.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UClass.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UClass.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.s
 .PHONY : Engine/Core/Object/UClass.cpp.s
 
@@ -340,8 +278,6 @@ Engine/Core/Object/UObject.o: Engine/Core/Object/UObject.cpp.o
 
 # target to build an object file
 Engine/Core/Object/UObject.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UObject.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UObject.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o
 .PHONY : Engine/Core/Object/UObject.cpp.o
 
@@ -350,8 +286,6 @@ Engine/Core/Object/UObject.i: Engine/Core/Object/UObject.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Object/UObject.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UObject.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UObject.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.i
 .PHONY : Engine/Core/Object/UObject.cpp.i
 
@@ -360,8 +294,6 @@ Engine/Core/Object/UObject.s: Engine/Core/Object/UObject.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Object/UObject.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UObject.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UObject.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.s
 .PHONY : Engine/Core/Object/UObject.cpp.s
 
@@ -370,8 +302,6 @@ Engine/Core/Object/UObjectDemo.o: Engine/Core/Object/UObjectDemo.cpp.o
 
 # target to build an object file
 Engine/Core/Object/UObjectDemo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UObjectDemo.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UObjectDemo.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o
 .PHONY : Engine/Core/Object/UObjectDemo.cpp.o
 
@@ -380,8 +310,6 @@ Engine/Core/Object/UObjectDemo.i: Engine/Core/Object/UObjectDemo.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Object/UObjectDemo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UObjectDemo.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UObjectDemo.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.i
 .PHONY : Engine/Core/Object/UObjectDemo.cpp.i
 
@@ -390,8 +318,6 @@ Engine/Core/Object/UObjectDemo.s: Engine/Core/Object/UObjectDemo.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Object/UObjectDemo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Object/UObjectDemo.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Object/UObjectDemo.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.s
 .PHONY : Engine/Core/Object/UObjectDemo.cpp.s
 
@@ -400,8 +326,6 @@ Engine/Core/Threading/RenderCommandQueue.o: Engine/Core/Threading/RenderCommandQ
 
 # target to build an object file
 Engine/Core/Threading/RenderCommandQueue.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o
 .PHONY : Engine/Core/Threading/RenderCommandQueue.cpp.o
 
@@ -410,8 +334,6 @@ Engine/Core/Threading/RenderCommandQueue.i: Engine/Core/Threading/RenderCommandQ
 
 # target to preprocess a source file
 Engine/Core/Threading/RenderCommandQueue.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Threading/RenderCommandQueue.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Threading/RenderCommandQueue.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.i
 .PHONY : Engine/Core/Threading/RenderCommandQueue.cpp.i
 
@@ -420,8 +342,6 @@ Engine/Core/Threading/RenderCommandQueue.s: Engine/Core/Threading/RenderCommandQ
 
 # target to generate assembly for a file
 Engine/Core/Threading/RenderCommandQueue.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Threading/RenderCommandQueue.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Threading/RenderCommandQueue.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.s
 .PHONY : Engine/Core/Threading/RenderCommandQueue.cpp.s
 
@@ -430,8 +350,6 @@ Engine/Core/Threading/ThreadManager.o: Engine/Core/Threading/ThreadManager.cpp.o
 
 # target to build an object file
 Engine/Core/Threading/ThreadManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Threading/ThreadManager.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Threading/ThreadManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o
 .PHONY : Engine/Core/Threading/ThreadManager.cpp.o
 
@@ -440,8 +358,6 @@ Engine/Core/Threading/ThreadManager.i: Engine/Core/Threading/ThreadManager.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Threading/ThreadManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Threading/ThreadManager.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Threading/ThreadManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.i
 .PHONY : Engine/Core/Threading/ThreadManager.cpp.i
 
@@ -450,8 +366,6 @@ Engine/Core/Threading/ThreadManager.s: Engine/Core/Threading/ThreadManager.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Threading/ThreadManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Threading/ThreadManager.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Threading/ThreadManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.s
 .PHONY : Engine/Core/Threading/ThreadManager.cpp.s
 
@@ -460,8 +374,6 @@ Engine/Core/Timer.o: Engine/Core/Timer.cpp.o
 
 # target to build an object file
 Engine/Core/Timer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Timer.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Timer.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o
 .PHONY : Engine/Core/Timer.cpp.o
 
@@ -470,8 +382,6 @@ Engine/Core/Timer.i: Engine/Core/Timer.cpp.i
 
 # target to preprocess a source file
 Engine/Core/Timer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Timer.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Timer.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.i
 .PHONY : Engine/Core/Timer.cpp.i
 
@@ -480,8 +390,6 @@ Engine/Core/Timer.s: Engine/Core/Timer.cpp.s
 
 # target to generate assembly for a file
 Engine/Core/Timer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Core/Timer.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Core/Timer.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.s
 .PHONY : Engine/Core/Timer.cpp.s
 
@@ -538,8 +446,6 @@ Engine/Rendering/Camera.o: Engine/Rendering/Camera.cpp.o
 
 # target to build an object file
 Engine/Rendering/Camera.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Rendering/Camera.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Rendering/Camera.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o
 .PHONY : Engine/Rendering/Camera.cpp.o
 
@@ -548,8 +454,6 @@ Engine/Rendering/Camera.i: Engine/Rendering/Camera.cpp.i
 
 # target to preprocess a source file
 Engine/Rendering/Camera.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Rendering/Camera.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Rendering/Camera.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.i
 .PHONY : Engine/Rendering/Camera.cpp.i
 
@@ -558,18 +462,254 @@ Engine/Rendering/Camera.s: Engine/Rendering/Camera.cpp.s
 
 # target to generate assembly for a file
 Engine/Rendering/Camera.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/Rendering/Camera.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/Rendering/Camera.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.s
 .PHONY : Engine/Rendering/Camera.cpp.s
+
+Engine/ThirdParty/imgui/backends/imgui_impl_glfw.o: Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.o
+
+# target to build an object file
+Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.o
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.o
+
+Engine/ThirdParty/imgui/backends/imgui_impl_glfw.i: Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.i
+
+# target to preprocess a source file
+Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.i
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.i
+
+Engine/ThirdParty/imgui/backends/imgui_impl_glfw.s: Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.s
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.s
+
+Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.o: Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.o
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.o
+
+# target to build an object file
+Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.o
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.o
+
+Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.i: Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.i
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.i
+
+# target to preprocess a source file
+Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.i
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.i
+
+Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.s: Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.s
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.s
+
+# target to generate assembly for a file
+Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.s
+.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.s
+
+Engine/ThirdParty/imgui/imgui.o: Engine/ThirdParty/imgui/imgui.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui.o
+
+# target to build an object file
+Engine/ThirdParty/imgui/imgui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui.cpp.o
+
+Engine/ThirdParty/imgui/imgui.i: Engine/ThirdParty/imgui/imgui.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui.i
+
+# target to preprocess a source file
+Engine/ThirdParty/imgui/imgui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui.cpp.i
+
+Engine/ThirdParty/imgui/imgui.s: Engine/ThirdParty/imgui/imgui.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui.s
+
+# target to generate assembly for a file
+Engine/ThirdParty/imgui/imgui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui.cpp.s
+
+Engine/ThirdParty/imgui/imgui_demo.o: Engine/ThirdParty/imgui/imgui_demo.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui_demo.o
+
+# target to build an object file
+Engine/ThirdParty/imgui/imgui_demo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_demo.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui_demo.cpp.o
+
+Engine/ThirdParty/imgui/imgui_demo.i: Engine/ThirdParty/imgui/imgui_demo.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui_demo.i
+
+# target to preprocess a source file
+Engine/ThirdParty/imgui/imgui_demo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_demo.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui_demo.cpp.i
+
+Engine/ThirdParty/imgui/imgui_demo.s: Engine/ThirdParty/imgui/imgui_demo.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui_demo.s
+
+# target to generate assembly for a file
+Engine/ThirdParty/imgui/imgui_demo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_demo.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui_demo.cpp.s
+
+Engine/ThirdParty/imgui/imgui_draw.o: Engine/ThirdParty/imgui/imgui_draw.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui_draw.o
+
+# target to build an object file
+Engine/ThirdParty/imgui/imgui_draw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_draw.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui_draw.cpp.o
+
+Engine/ThirdParty/imgui/imgui_draw.i: Engine/ThirdParty/imgui/imgui_draw.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui_draw.i
+
+# target to preprocess a source file
+Engine/ThirdParty/imgui/imgui_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_draw.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui_draw.cpp.i
+
+Engine/ThirdParty/imgui/imgui_draw.s: Engine/ThirdParty/imgui/imgui_draw.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui_draw.s
+
+# target to generate assembly for a file
+Engine/ThirdParty/imgui/imgui_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_draw.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui_draw.cpp.s
+
+Engine/ThirdParty/imgui/imgui_tables.o: Engine/ThirdParty/imgui/imgui_tables.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui_tables.o
+
+# target to build an object file
+Engine/ThirdParty/imgui/imgui_tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_tables.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui_tables.cpp.o
+
+Engine/ThirdParty/imgui/imgui_tables.i: Engine/ThirdParty/imgui/imgui_tables.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui_tables.i
+
+# target to preprocess a source file
+Engine/ThirdParty/imgui/imgui_tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_tables.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui_tables.cpp.i
+
+Engine/ThirdParty/imgui/imgui_tables.s: Engine/ThirdParty/imgui/imgui_tables.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui_tables.s
+
+# target to generate assembly for a file
+Engine/ThirdParty/imgui/imgui_tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_tables.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui_tables.cpp.s
+
+Engine/ThirdParty/imgui/imgui_widgets.o: Engine/ThirdParty/imgui/imgui_widgets.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui_widgets.o
+
+# target to build an object file
+Engine/ThirdParty/imgui/imgui_widgets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_widgets.cpp.o
+.PHONY : Engine/ThirdParty/imgui/imgui_widgets.cpp.o
+
+Engine/ThirdParty/imgui/imgui_widgets.i: Engine/ThirdParty/imgui/imgui_widgets.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui_widgets.i
+
+# target to preprocess a source file
+Engine/ThirdParty/imgui/imgui_widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_widgets.cpp.i
+.PHONY : Engine/ThirdParty/imgui/imgui_widgets.cpp.i
+
+Engine/ThirdParty/imgui/imgui_widgets.s: Engine/ThirdParty/imgui/imgui_widgets.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+Engine/ThirdParty/imgui/imgui_widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_widgets.cpp.s
+.PHONY : Engine/ThirdParty/imgui/imgui_widgets.cpp.s
+
+Engine/UI/ImGuiWrapper.o: Engine/UI/ImGuiWrapper.cpp.o
+.PHONY : Engine/UI/ImGuiWrapper.o
+
+# target to build an object file
+Engine/UI/ImGuiWrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/ImGuiWrapper.cpp.o
+.PHONY : Engine/UI/ImGuiWrapper.cpp.o
+
+Engine/UI/ImGuiWrapper.i: Engine/UI/ImGuiWrapper.cpp.i
+.PHONY : Engine/UI/ImGuiWrapper.i
+
+# target to preprocess a source file
+Engine/UI/ImGuiWrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/ImGuiWrapper.cpp.i
+.PHONY : Engine/UI/ImGuiWrapper.cpp.i
+
+Engine/UI/ImGuiWrapper.s: Engine/UI/ImGuiWrapper.cpp.s
+.PHONY : Engine/UI/ImGuiWrapper.s
+
+# target to generate assembly for a file
+Engine/UI/ImGuiWrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/ImGuiWrapper.cpp.s
+.PHONY : Engine/UI/ImGuiWrapper.cpp.s
+
+Engine/UI/Panels/ConsolePanel.o: Engine/UI/Panels/ConsolePanel.cpp.o
+.PHONY : Engine/UI/Panels/ConsolePanel.o
+
+# target to build an object file
+Engine/UI/Panels/ConsolePanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ConsolePanel.cpp.o
+.PHONY : Engine/UI/Panels/ConsolePanel.cpp.o
+
+Engine/UI/Panels/ConsolePanel.i: Engine/UI/Panels/ConsolePanel.cpp.i
+.PHONY : Engine/UI/Panels/ConsolePanel.i
+
+# target to preprocess a source file
+Engine/UI/Panels/ConsolePanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ConsolePanel.cpp.i
+.PHONY : Engine/UI/Panels/ConsolePanel.cpp.i
+
+Engine/UI/Panels/ConsolePanel.s: Engine/UI/Panels/ConsolePanel.cpp.s
+.PHONY : Engine/UI/Panels/ConsolePanel.s
+
+# target to generate assembly for a file
+Engine/UI/Panels/ConsolePanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ConsolePanel.cpp.s
+.PHONY : Engine/UI/Panels/ConsolePanel.cpp.s
+
+Engine/UI/Panels/ContentBrowserPanel.o: Engine/UI/Panels/ContentBrowserPanel.cpp.o
+.PHONY : Engine/UI/Panels/ContentBrowserPanel.o
+
+# target to build an object file
+Engine/UI/Panels/ContentBrowserPanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ContentBrowserPanel.cpp.o
+.PHONY : Engine/UI/Panels/ContentBrowserPanel.cpp.o
+
+Engine/UI/Panels/ContentBrowserPanel.i: Engine/UI/Panels/ContentBrowserPanel.cpp.i
+.PHONY : Engine/UI/Panels/ContentBrowserPanel.i
+
+# target to preprocess a source file
+Engine/UI/Panels/ContentBrowserPanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ContentBrowserPanel.cpp.i
+.PHONY : Engine/UI/Panels/ContentBrowserPanel.cpp.i
+
+Engine/UI/Panels/ContentBrowserPanel.s: Engine/UI/Panels/ContentBrowserPanel.cpp.s
+.PHONY : Engine/UI/Panels/ContentBrowserPanel.s
+
+# target to generate assembly for a file
+Engine/UI/Panels/ContentBrowserPanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ContentBrowserPanel.cpp.s
+.PHONY : Engine/UI/Panels/ContentBrowserPanel.cpp.s
 
 Engine/UI/Panels/DebugOverlay.o: Engine/UI/Panels/DebugOverlay.cpp.o
 .PHONY : Engine/UI/Panels/DebugOverlay.o
 
 # target to build an object file
 Engine/UI/Panels/DebugOverlay.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/DebugOverlay.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/DebugOverlay.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o
 .PHONY : Engine/UI/Panels/DebugOverlay.cpp.o
 
@@ -578,8 +718,6 @@ Engine/UI/Panels/DebugOverlay.i: Engine/UI/Panels/DebugOverlay.cpp.i
 
 # target to preprocess a source file
 Engine/UI/Panels/DebugOverlay.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/DebugOverlay.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/DebugOverlay.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.i
 .PHONY : Engine/UI/Panels/DebugOverlay.cpp.i
 
@@ -588,18 +726,38 @@ Engine/UI/Panels/DebugOverlay.s: Engine/UI/Panels/DebugOverlay.cpp.s
 
 # target to generate assembly for a file
 Engine/UI/Panels/DebugOverlay.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/DebugOverlay.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/DebugOverlay.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.s
 .PHONY : Engine/UI/Panels/DebugOverlay.cpp.s
+
+Engine/UI/Panels/DetailsPanel.o: Engine/UI/Panels/DetailsPanel.cpp.o
+.PHONY : Engine/UI/Panels/DetailsPanel.o
+
+# target to build an object file
+Engine/UI/Panels/DetailsPanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DetailsPanel.cpp.o
+.PHONY : Engine/UI/Panels/DetailsPanel.cpp.o
+
+Engine/UI/Panels/DetailsPanel.i: Engine/UI/Panels/DetailsPanel.cpp.i
+.PHONY : Engine/UI/Panels/DetailsPanel.i
+
+# target to preprocess a source file
+Engine/UI/Panels/DetailsPanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DetailsPanel.cpp.i
+.PHONY : Engine/UI/Panels/DetailsPanel.cpp.i
+
+Engine/UI/Panels/DetailsPanel.s: Engine/UI/Panels/DetailsPanel.cpp.s
+.PHONY : Engine/UI/Panels/DetailsPanel.s
+
+# target to generate assembly for a file
+Engine/UI/Panels/DetailsPanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DetailsPanel.cpp.s
+.PHONY : Engine/UI/Panels/DetailsPanel.cpp.s
 
 Engine/UI/Panels/ObjectHierarchyPanel.o: Engine/UI/Panels/ObjectHierarchyPanel.cpp.o
 .PHONY : Engine/UI/Panels/ObjectHierarchyPanel.o
 
 # target to build an object file
 Engine/UI/Panels/ObjectHierarchyPanel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o
 .PHONY : Engine/UI/Panels/ObjectHierarchyPanel.cpp.o
 
@@ -608,8 +766,6 @@ Engine/UI/Panels/ObjectHierarchyPanel.i: Engine/UI/Panels/ObjectHierarchyPanel.c
 
 # target to preprocess a source file
 Engine/UI/Panels/ObjectHierarchyPanel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.i
 .PHONY : Engine/UI/Panels/ObjectHierarchyPanel.cpp.i
 
@@ -618,8 +774,6 @@ Engine/UI/Panels/ObjectHierarchyPanel.s: Engine/UI/Panels/ObjectHierarchyPanel.c
 
 # target to generate assembly for a file
 Engine/UI/Panels/ObjectHierarchyPanel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.s
 .PHONY : Engine/UI/Panels/ObjectHierarchyPanel.cpp.s
 
@@ -628,8 +782,6 @@ Engine/UI/Panels/StatsPanel.o: Engine/UI/Panels/StatsPanel.cpp.o
 
 # target to build an object file
 Engine/UI/Panels/StatsPanel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/StatsPanel.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/StatsPanel.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o
 .PHONY : Engine/UI/Panels/StatsPanel.cpp.o
 
@@ -638,8 +790,6 @@ Engine/UI/Panels/StatsPanel.i: Engine/UI/Panels/StatsPanel.cpp.i
 
 # target to preprocess a source file
 Engine/UI/Panels/StatsPanel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/StatsPanel.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/StatsPanel.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.i
 .PHONY : Engine/UI/Panels/StatsPanel.cpp.i
 
@@ -648,18 +798,62 @@ Engine/UI/Panels/StatsPanel.s: Engine/UI/Panels/StatsPanel.cpp.s
 
 # target to generate assembly for a file
 Engine/UI/Panels/StatsPanel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/Panels/StatsPanel.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/Panels/StatsPanel.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.s
 .PHONY : Engine/UI/Panels/StatsPanel.cpp.s
+
+Engine/UI/Panels/ViewportPanel.o: Engine/UI/Panels/ViewportPanel.cpp.o
+.PHONY : Engine/UI/Panels/ViewportPanel.o
+
+# target to build an object file
+Engine/UI/Panels/ViewportPanel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ViewportPanel.cpp.o
+.PHONY : Engine/UI/Panels/ViewportPanel.cpp.o
+
+Engine/UI/Panels/ViewportPanel.i: Engine/UI/Panels/ViewportPanel.cpp.i
+.PHONY : Engine/UI/Panels/ViewportPanel.i
+
+# target to preprocess a source file
+Engine/UI/Panels/ViewportPanel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ViewportPanel.cpp.i
+.PHONY : Engine/UI/Panels/ViewportPanel.cpp.i
+
+Engine/UI/Panels/ViewportPanel.s: Engine/UI/Panels/ViewportPanel.cpp.s
+.PHONY : Engine/UI/Panels/ViewportPanel.s
+
+# target to generate assembly for a file
+Engine/UI/Panels/ViewportPanel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ViewportPanel.cpp.s
+.PHONY : Engine/UI/Panels/ViewportPanel.cpp.s
+
+Engine/UI/Scripting/LuaUI.o: Engine/UI/Scripting/LuaUI.cpp.o
+.PHONY : Engine/UI/Scripting/LuaUI.o
+
+# target to build an object file
+Engine/UI/Scripting/LuaUI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Scripting/LuaUI.cpp.o
+.PHONY : Engine/UI/Scripting/LuaUI.cpp.o
+
+Engine/UI/Scripting/LuaUI.i: Engine/UI/Scripting/LuaUI.cpp.i
+.PHONY : Engine/UI/Scripting/LuaUI.i
+
+# target to preprocess a source file
+Engine/UI/Scripting/LuaUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Scripting/LuaUI.cpp.i
+.PHONY : Engine/UI/Scripting/LuaUI.cpp.i
+
+Engine/UI/Scripting/LuaUI.s: Engine/UI/Scripting/LuaUI.cpp.s
+.PHONY : Engine/UI/Scripting/LuaUI.s
+
+# target to generate assembly for a file
+Engine/UI/Scripting/LuaUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Scripting/LuaUI.cpp.s
+.PHONY : Engine/UI/Scripting/LuaUI.cpp.s
 
 Engine/UI/UIBase.o: Engine/UI/UIBase.cpp.o
 .PHONY : Engine/UI/UIBase.o
 
 # target to build an object file
 Engine/UI/UIBase.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/UIBase.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/UIBase.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o
 .PHONY : Engine/UI/UIBase.cpp.o
 
@@ -668,8 +862,6 @@ Engine/UI/UIBase.i: Engine/UI/UIBase.cpp.i
 
 # target to preprocess a source file
 Engine/UI/UIBase.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/UIBase.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/UIBase.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.i
 .PHONY : Engine/UI/UIBase.cpp.i
 
@@ -678,8 +870,6 @@ Engine/UI/UIBase.s: Engine/UI/UIBase.cpp.s
 
 # target to generate assembly for a file
 Engine/UI/UIBase.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/UIBase.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/UIBase.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.s
 .PHONY : Engine/UI/UIBase.cpp.s
 
@@ -688,8 +878,6 @@ Engine/UI/UIManager.o: Engine/UI/UIManager.cpp.o
 
 # target to build an object file
 Engine/UI/UIManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/UIManager.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/UIManager.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o
 .PHONY : Engine/UI/UIManager.cpp.o
 
@@ -698,8 +886,6 @@ Engine/UI/UIManager.i: Engine/UI/UIManager.cpp.i
 
 # target to preprocess a source file
 Engine/UI/UIManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/UIManager.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/UIManager.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.i
 .PHONY : Engine/UI/UIManager.cpp.i
 
@@ -708,58 +894,8 @@ Engine/UI/UIManager.s: Engine/UI/UIManager.cpp.s
 
 # target to generate assembly for a file
 Engine/UI/UIManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Engine/UI/UIManager.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Engine/UI/UIManager.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.s
 .PHONY : Engine/UI/UIManager.cpp.s
-
-Examples/ThreadingDemo.o: Examples/ThreadingDemo.cpp.o
-.PHONY : Examples/ThreadingDemo.o
-
-# target to build an object file
-Examples/ThreadingDemo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Examples/ThreadingDemo.cpp.o
-.PHONY : Examples/ThreadingDemo.cpp.o
-
-Examples/ThreadingDemo.i: Examples/ThreadingDemo.cpp.i
-.PHONY : Examples/ThreadingDemo.i
-
-# target to preprocess a source file
-Examples/ThreadingDemo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Examples/ThreadingDemo.cpp.i
-.PHONY : Examples/ThreadingDemo.cpp.i
-
-Examples/ThreadingDemo.s: Examples/ThreadingDemo.cpp.s
-.PHONY : Examples/ThreadingDemo.s
-
-# target to generate assembly for a file
-Examples/ThreadingDemo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/Examples/ThreadingDemo.cpp.s
-.PHONY : Examples/ThreadingDemo.cpp.s
-
-Examples/UObjectDemoProgram.o: Examples/UObjectDemoProgram.cpp.o
-.PHONY : Examples/UObjectDemoProgram.o
-
-# target to build an object file
-Examples/UObjectDemoProgram.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Examples/UObjectDemoProgram.cpp.o
-.PHONY : Examples/UObjectDemoProgram.cpp.o
-
-Examples/UObjectDemoProgram.i: Examples/UObjectDemoProgram.cpp.i
-.PHONY : Examples/UObjectDemoProgram.i
-
-# target to preprocess a source file
-Examples/UObjectDemoProgram.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Examples/UObjectDemoProgram.cpp.i
-.PHONY : Examples/UObjectDemoProgram.cpp.i
-
-Examples/UObjectDemoProgram.s: Examples/UObjectDemoProgram.cpp.s
-.PHONY : Examples/UObjectDemoProgram.s
-
-# target to generate assembly for a file
-Examples/UObjectDemoProgram.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/Examples/UObjectDemoProgram.cpp.s
-.PHONY : Examples/UObjectDemoProgram.cpp.s
 
 Source/main.o: Source/main.cpp.o
 .PHONY : Source/main.o
@@ -793,8 +929,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... ThreadingDemo"
-	@echo "... UObjectDemo"
 	@echo "... VulkanCube"
 	@echo "... Engine/Core/Log.o"
 	@echo "... Engine/Core/Log.i"
@@ -838,27 +972,60 @@ help:
 	@echo "... Engine/Rendering/Camera.o"
 	@echo "... Engine/Rendering/Camera.i"
 	@echo "... Engine/Rendering/Camera.s"
+	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_glfw.o"
+	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_glfw.i"
+	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_glfw.s"
+	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.o"
+	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.i"
+	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.s"
+	@echo "... Engine/ThirdParty/imgui/imgui.o"
+	@echo "... Engine/ThirdParty/imgui/imgui.i"
+	@echo "... Engine/ThirdParty/imgui/imgui.s"
+	@echo "... Engine/ThirdParty/imgui/imgui_demo.o"
+	@echo "... Engine/ThirdParty/imgui/imgui_demo.i"
+	@echo "... Engine/ThirdParty/imgui/imgui_demo.s"
+	@echo "... Engine/ThirdParty/imgui/imgui_draw.o"
+	@echo "... Engine/ThirdParty/imgui/imgui_draw.i"
+	@echo "... Engine/ThirdParty/imgui/imgui_draw.s"
+	@echo "... Engine/ThirdParty/imgui/imgui_tables.o"
+	@echo "... Engine/ThirdParty/imgui/imgui_tables.i"
+	@echo "... Engine/ThirdParty/imgui/imgui_tables.s"
+	@echo "... Engine/ThirdParty/imgui/imgui_widgets.o"
+	@echo "... Engine/ThirdParty/imgui/imgui_widgets.i"
+	@echo "... Engine/ThirdParty/imgui/imgui_widgets.s"
+	@echo "... Engine/UI/ImGuiWrapper.o"
+	@echo "... Engine/UI/ImGuiWrapper.i"
+	@echo "... Engine/UI/ImGuiWrapper.s"
+	@echo "... Engine/UI/Panels/ConsolePanel.o"
+	@echo "... Engine/UI/Panels/ConsolePanel.i"
+	@echo "... Engine/UI/Panels/ConsolePanel.s"
+	@echo "... Engine/UI/Panels/ContentBrowserPanel.o"
+	@echo "... Engine/UI/Panels/ContentBrowserPanel.i"
+	@echo "... Engine/UI/Panels/ContentBrowserPanel.s"
 	@echo "... Engine/UI/Panels/DebugOverlay.o"
 	@echo "... Engine/UI/Panels/DebugOverlay.i"
 	@echo "... Engine/UI/Panels/DebugOverlay.s"
+	@echo "... Engine/UI/Panels/DetailsPanel.o"
+	@echo "... Engine/UI/Panels/DetailsPanel.i"
+	@echo "... Engine/UI/Panels/DetailsPanel.s"
 	@echo "... Engine/UI/Panels/ObjectHierarchyPanel.o"
 	@echo "... Engine/UI/Panels/ObjectHierarchyPanel.i"
 	@echo "... Engine/UI/Panels/ObjectHierarchyPanel.s"
 	@echo "... Engine/UI/Panels/StatsPanel.o"
 	@echo "... Engine/UI/Panels/StatsPanel.i"
 	@echo "... Engine/UI/Panels/StatsPanel.s"
+	@echo "... Engine/UI/Panels/ViewportPanel.o"
+	@echo "... Engine/UI/Panels/ViewportPanel.i"
+	@echo "... Engine/UI/Panels/ViewportPanel.s"
+	@echo "... Engine/UI/Scripting/LuaUI.o"
+	@echo "... Engine/UI/Scripting/LuaUI.i"
+	@echo "... Engine/UI/Scripting/LuaUI.s"
 	@echo "... Engine/UI/UIBase.o"
 	@echo "... Engine/UI/UIBase.i"
 	@echo "... Engine/UI/UIBase.s"
 	@echo "... Engine/UI/UIManager.o"
 	@echo "... Engine/UI/UIManager.i"
 	@echo "... Engine/UI/UIManager.s"
-	@echo "... Examples/ThreadingDemo.o"
-	@echo "... Examples/ThreadingDemo.i"
-	@echo "... Examples/ThreadingDemo.s"
-	@echo "... Examples/UObjectDemoProgram.o"
-	@echo "... Examples/UObjectDemoProgram.i"
-	@echo "... Examples/UObjectDemoProgram.s"
 	@echo "... Source/main.o"
 	@echo "... Source/main.i"
 	@echo "... Source/main.s"

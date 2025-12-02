@@ -1,0 +1,150 @@
+[16:47:38.824] LogCore: Log: === Engine Log Started ===
+[16:47:38.824] LogCore: Log: === Vulkan Engine Starting ===
+[16:47:38.824] LogCore: Log: Initializing engine systems...
+[16:47:38.824] LogCore: Log: Starting application main loop...
+[16:47:38.824] LogCore: Log: Initializing GLFW...
+[16:47:38.832] LogCore: Log: Primary monitor resolution: 1920x1080
+[16:47:38.832] LogCore: Log: Creating window: 1920x1080 (Min: 800x600, Max: 1920x1080)
+[16:47:38.884] LogCore: Log: Window created successfully at position (0, 0)
+[16:47:38.884] LogRHI: Log: Initializing Vulkan...
+[16:47:39.239] LogRHI: Log: Vulkan initialized successfully
+[16:47:39.239] LogCore: Log: Camera initialized - Position: (0, 0, -3) | Aspect: 2.05
+[16:47:39.239] LogUI: Log: Initializing ImGui...
+[16:47:39.239] LogCore: Log: Initializing ImGui...
+[16:47:39.240] LogCore: Log: ImGui initialized successfully
+[16:47:39.240] LogUI: Log: UE5 style applied successfully
+[16:47:39.240] LogUI: Log: ImGui initialized successfully with UE5 style
+[16:47:39.240] LogCore: Log: Entering main loop...
+[16:47:39.240] LogCore: Log: Controls: WASD - Move | Mouse - Look | ESC - Lock/Unlock Mouse | F11 - Maximize/Restore | TAB - Toggle UI
+[16:47:39.240] LogCore: Log: Supported resolutions: 800x600 to 1920x1080
+[16:47:39.240] LogCore: Log: Initializing UIManager...
+[16:47:39.240] LogCore: Log: UIManager initialized successfully
+[16:47:39.240] LogCore: Verbose: Registered UI Panel: DebugOverlay
+[16:47:39.240] LogCore: Verbose: Registered UI Window: StatsPanel
+[16:47:39.240] LogCore: Verbose: Registered UI Window: ObjectHierarchy
+[16:47:39.240] LogCore: Verbose: Registered UI Window: Viewport
+[16:47:39.240] LogCore: Verbose: Registered UI Window: Details
+[16:47:39.240] LogCore: Verbose: Registered UI Window: ContentBrowser
+[16:47:39.240] LogCore: Verbose: Registered UI Window: Console
+[16:47:39.240] LogCore: Log: Starting main loop...
+[16:47:39.240] LogCore: Log: First iteration of main loop starting...
+[16:47:39.240] LogCore: Verbose: Framebuffer resized to 1920x935 (Aspect: 2.05)
+[16:47:39.241] LogCore: Verbose: Window resized to 1920x935 (Framebuffer: 1920x935, Aspect: 2.05)
+[16:47:39.241] LogCore: Log: Events polled, checking window close status...
+[16:47:39.241] LogCore: Log: Calling ImGui::NewFrame()...
+[16:47:39.241] LogCore: Log: ImGui::NewFrame() completed
+[16:47:39.241] LogCore: Log: Updating UI data...
+[16:47:39.241] LogCore: Log: UI data updated successfully
+[16:47:39.241] LogCore: Log: Calling UIManager::Update()...
+[16:47:39.241] LogCore: Log: UIManager::Update() completed
+[16:47:39.241] LogCore: Log: Calling UIManager::Render()...
+[16:47:39.242] LogCore: Log: UIManager::Render() completed
+[16:47:39.242] LogCore: Log: Calling PrepareRender()...
+[16:47:39.242] LogUI: Verbose: [PrepareRender] Found 1 textures (will be handled automatically)
+[16:47:39.242] LogCore: Log: PrepareRender() completed
+[16:47:39.242] LogCore: Log: About to enter drawFrame scope (after PrepareRender)...
+[16:47:39.242] LogCore: Log: Inside drawFrame scope, creating SCOPED_TIMER_SILENT...
+[16:47:39.242] LogCore: Log: SCOPED_TIMER_SILENT created, calling drawFrame()...
+[16:47:39.242] LogRHI: Log: [drawFrame] About to record command buffer...
+[16:47:39.242] LogRHI: Log: [recordCommandBuffer] About to render ImGui (first call)...
+[16:47:39.242] LogUI: Verbose: Render called but CmdListsCount is 0
+[16:47:39.242] LogRHI: Log: [recordCommandBuffer] ImGui rendered successfully
+[16:47:39.242] LogRHI: Log: [drawFrame] Command buffer recorded successfully
+[16:47:39.242] LogRHI: Log: [drawFrame] About to submit to graphics queue...
+[16:47:39.242] LogRHI: Log: [drawFrame] Submitted to graphics queue successfully
+[16:47:39.242] LogRHI: Log: [drawFrame] About to present...
+[16:47:39.464] LogRHI: Log: Swap chain recreated with resolution: 1920x935
+[16:47:39.464] LogRHI: Log: [drawFrame] Present completed successfully
+[16:47:39.464] LogRHI: Log: [drawFrame] First drawFrame() completed successfully!
+[16:47:39.464] LogCore: Log: First drawFrame() completed successfully!
+[16:47:39.464] LogCore: Log: About to exit drawFrame scope...
+[16:47:39.464] LogCore: Log: Exited drawFrame scope successfully
+[16:47:39.464] LogCore: Log: First frame completed successfully! Loop continuing...
+[16:47:39.464] LogCore: Log: Framebuffer resized - New size: 1920x935
+[16:47:39.464] LogUI: Log: [ImGuiWrapper::Render] Frame 2: Texture 0 has pending status 2, skipping render
+[16:47:39.465] LogUI: Log: [ImGuiWrapper::Render] Frame 3: Texture 0 has pending status 2, skipping render
+[16:47:39.465] LogUI: Log: [ImGuiWrapper::Render] Frame 4: Texture 0 has pending status 2, skipping render
+[16:47:39.465] LogUI: Log: [ImGuiWrapper::Render] Frame 5: Texture 0 has pending status 2, skipping render
+[16:47:39.466] LogUI: Log: [ImGuiWrapper::Render] Frame 6: Texture 0 has pending status 2, skipping render
+[16:47:39.466] LogUI: Log: [ImGuiWrapper::Render] Frame 7: Texture 0 has pending status 2, skipping render
+[16:47:39.544] LogUI: Log: [ImGuiWrapper::Render] Frame 8: Texture 0 has pending status 2, skipping render
+[16:47:39.563] LogUI: Log: [ImGuiWrapper::Render] Frame 9: Texture 0 has pending status 2, skipping render
+[16:47:39.564] LogUI: Log: [ImGuiWrapper::Render] Frame 10: Texture 0 has pending status 2, skipping render
+[16:47:40.244] LogCore: Log: FPS: 883.54 | Delta: 16.63ms | Frame: 50 | Time: 1.40s | Camera: (0.00, 0.00, -3.00)
+[16:47:40.394] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.62
+Delta: 16.77ms
+Frames: 60
+Time: 1.57s
+Camera: (0.40, 0.00, -3.27)
+Render Queue: 0 commands
+
+[16:47:41.260] LogCore: Log: FPS: 60.02 | Delta: 16.55ms | Frame: 111 | Time: 2.42s | Camera: (-0.67, 0.00, -4.47)
+[16:47:41.394] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.60
+Delta: 16.78ms
+Frames: 120
+Time: 2.57s
+Camera: (-0.01, 0.00, -4.47)
+Render Queue: 0 commands
+
+[16:47:42.277] LogCore: Log: FPS: 60.01 | Delta: 16.77ms | Frame: 172 | Time: 3.44s | Camera: (0.66, 0.00, -3.93)
+[16:47:42.394] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.62
+Delta: 16.77ms
+Frames: 180
+Time: 3.57s
+Camera: (0.79, 0.00, -2.87)
+Render Queue: 0 commands
+
+[16:47:43.278] LogCore: Log: FPS: 59.99 | Delta: 16.68ms | Frame: 232 | Time: 4.44s | Camera: (-0.00, 0.00, -1.93)
+[16:47:43.395] LogCore: Verbose: === Debug Overlay ===
+FPS: 58.60
+Delta: 17.06ms
+Frames: 240
+Time: 4.57s
+Camera: (-0.00, 0.00, -0.86)
+Render Queue: 0 commands
+
+[16:47:44.278] LogCore: Log: FPS: 60.04 | Delta: 17.80ms | Frame: 292 | Time: 5.44s | Camera: (0.66, 0.00, -4.44)
+[16:47:44.396] LogCore: Verbose: === Debug Overlay ===
+FPS: 56.85
+Delta: 17.59ms
+Frames: 300
+Time: 5.57s
+Camera: (0.11, 0.00, -3.51)
+Render Queue: 0 commands
+
+[16:47:45.294] LogCore: Log: FPS: 60.10 | Delta: 16.20ms | Frame: 353 | Time: 6.45s | Camera: (0.38, 0.00, -4.31)
+[16:47:45.397] LogCore: Verbose: === Debug Overlay ===
+FPS: 54.65
+Delta: 18.30ms
+Frames: 360
+Time: 6.57s
+Camera: (-0.43, 0.00, -4.31)
+Render Queue: 0 commands
+
+[16:47:46.295] LogCore: Log: FPS: 60.17 | Delta: 16.21ms | Frame: 413 | Time: 7.45s | Camera: (0.36, 0.00, -4.31)
+[16:47:46.396] LogCore: Verbose: === Debug Overlay ===
+FPS: 65.42
+Delta: 15.29ms
+Frames: 420
+Time: 7.57s
+Camera: (0.61, 0.00, -4.31)
+Render Queue: 0 commands
+
+[16:47:47.315] LogCore: Log: FPS: 60.91 | Delta: 16.55ms | Frame: 474 | Time: 8.47s | Camera: (0.33, 0.00, -4.44)
+[16:47:47.396] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.95
+Delta: 16.68ms
+Frames: 480
+Time: 8.57s
+Camera: (0.33, 0.00, -4.44)
+Render Queue: 0 commands
+
+[16:47:47.811] LogCore: Log: Window close requested (iteration 505)
+[16:47:47.811] LogCore: Log: Main loop ended. Total frames: 505
+[16:47:47.846] LogCore: Log: Vulkan device idle, cleanup complete
+[16:47:47.846] LogCore: Log: Shutting down UIManager...
+[16:47:47.846] LogCore: Log: UIManager shutdown complete
+[16:47:48.093] LogCore: Log: Application main loop ended normally

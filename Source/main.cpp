@@ -8,6 +8,11 @@
 #include "UI/Panels/DebugOverlay.h"
 #include "UI/Panels/StatsPanel.h"
 #include "UI/Panels/ObjectHierarchyPanel.h"
+#include "UI/Panels/ViewportPanel.h"
+#include "UI/Panels/DetailsPanel.h"
+#include "UI/Panels/ContentBrowserPanel.h"
+#include "UI/Panels/ConsolePanel.h"
+#include "UI/ImGuiWrapper.h"
 #include "Rendering/Camera.h"
 #include "Input/InputManager.h"
 
@@ -182,6 +187,29 @@ private:
         camera.SetMouseSensitivity(0.15f);
         
         UE_LOG_INFO(LogCategories::Core, "Camera initialized - Position: (0, 0, -3) | Aspect: %.2f", aspectRatio);
+        
+        // Initialize ImGui
+        UE_LOG_INFO(LogCategories::UI, "Initializing ImGui...");
+        bool imguiInitialized = UI::ImGuiWrapper::Get().Initialize(
+            window,
+            cube.GetInstance(),
+            cube.GetPhysicalDevice(),
+            cube.GetDevice(),
+            cube.GetGraphicsQueue(),
+            cube.GetGraphicsQueueFamilyIndex(),
+            cube.GetRenderPass(),
+            cube.GetDescriptorPool(),
+            2,  // minImageCount
+            3   // imageCount (MAX_FRAMES_IN_FLIGHT, típicamente 2-3)
+        );
+        
+        if (imguiInitialized) {
+            // Aplicar estilo Unreal Engine 5
+            UI::ImGuiWrapper::Get().SetStyleUE5();
+            UE_LOG_INFO(LogCategories::UI, "ImGui initialized successfully with UE5 style");
+        } else {
+            UE_LOG_WARNING(LogCategories::UI, "Failed to initialize ImGui, continuing without UI");
+        }
     }
 
     void mainLoop() {
@@ -197,7 +225,18 @@ private:
         UI::UIManager::Get().RegisterWindow("StatsPanel", std::make_shared<UI::StatsPanel>());
         UI::UIManager::Get().RegisterWindow("ObjectHierarchy", std::make_shared<UI::ObjectHierarchyPanel>());
         
+        // Registrar paneles estilo UE5
+        UI::UIManager::Get().RegisterWindow("Viewport", std::make_shared<UI::ViewportPanel>());
+        UI::UIManager::Get().RegisterWindow("Details", std::make_shared<UI::DetailsPanel>());
+        UI::UIManager::Get().RegisterWindow("ContentBrowser", std::make_shared<UI::ContentBrowserPanel>());
+        UI::UIManager::Get().RegisterWindow("Console", std::make_shared<UI::ConsolePanel>());
+        
+        // Mostrar paneles principales por defecto
         UI::UIManager::Get().SetShowDebugOverlay(true);
+        UI::UIManager::Get().ShowWindow("Viewport");
+        UI::UIManager::Get().ShowWindow("Details");
+        UI::UIManager::Get().ShowWindow("ContentBrowser");
+        UI::UIManager::Get().ShowWindow("Console");
         
         // Initialize global frame timer
         GFrameTimer = &frameTimer;
@@ -207,13 +246,30 @@ private:
         uint32_t frameCount = 0;
         FTimer statsTimer;
         
+        UE_LOG_INFO(LogCategories::Core, "Starting main loop...");
+        uint32_t loopIteration = 0;
         while (!glfwWindowShouldClose(window)) {
+            loopIteration++;
+            if (loopIteration == 1) {
+                UE_LOG_INFO(LogCategories::Core, "First iteration of main loop starting...");
+            }
+            
             // Tick frame timer
-            frameTimer.Tick();
+            try {
+                frameTimer.Tick();
+            } catch (const std::exception& e) {
+                UE_LOG_ERROR(LogCategories::Core, "Exception in frameTimer.Tick(): %s", e.what());
+                break;
+            }
             double deltaTime = frameTimer.GetDeltaTime();
             
             // Update Input
-            InputManager::Get().Update();
+            try {
+                InputManager::Get().Update();
+            } catch (const std::exception& e) {
+                UE_LOG_ERROR(LogCategories::Core, "Exception in InputManager::Update(): %s", e.what());
+                break;
+            }
             
             // Handle ESC key to lock/unlock mouse
             if (InputManager::Get().IsKeyJustPressed(Keys::Escape)) {
@@ -369,19 +425,44 @@ private:
             cube.UpdateMatrices(view.Data(), proj.Data());
             
             // Poll events
-            glfwPollEvents();
-            
-            // Render frame
-            {
-                SCOPED_TIMER_SILENT("DrawFrame");
-                cube.drawFrame();
+            try {
+                glfwPollEvents();
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "Events polled, checking window close status...");
+                }
+            } catch (const std::exception& e) {
+                UE_LOG_ERROR(LogCategories::Core, "Exception in glfwPollEvents(): %s", e.what());
+                break;
             }
             
-            // Update UI
-            UI::UIManager::Get().Update(deltaTime);
+            // Check if window should close (after polling events)
+            if (glfwWindowShouldClose(window)) {
+                UE_LOG_INFO(LogCategories::Core, "Window close requested (iteration %u)", loopIteration);
+                break;
+            }
             
-            // Update UI data
-            {
+            // ImGui: New frame (must be called before any ImGui calls)
+            try {
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "Calling ImGui::NewFrame()...");
+                }
+                UI::ImGuiWrapper::Get().NewFrame();
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "ImGui::NewFrame() completed");
+                }
+            } catch (const std::exception& e) {
+                UE_LOG_ERROR(LogCategories::Core, "Exception in ImGuiWrapper::NewFrame(): %s", e.what());
+                break;
+            } catch (...) {
+                UE_LOG_FATAL(LogCategories::Core, "Unknown exception in ImGuiWrapper::NewFrame()");
+                break;
+            }
+            
+            // Update UI data BEFORE creating UI widgets
+            if (loopIteration == 1) {
+                UE_LOG_INFO(LogCategories::Core, "Updating UI data...");
+            }
+            try {
                 auto debugOverlay = std::dynamic_pointer_cast<UI::DebugOverlay>(UI::UIManager::Get().GetPanel("DebugOverlay"));
                 if (debugOverlay) {
                     debugOverlay->SetFPS(frameTimer.GetFPS());
@@ -404,13 +485,118 @@ private:
                         frameTimer.GetTotalTime()
                     );
                 }
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "UI data updated successfully");
+                }
+            } catch (const std::exception& e) {
+                UE_LOG_ERROR(LogCategories::Core, "Exception updating UI data: %s", e.what());
+                break;
             }
             
-            // Render UI (al final, sobre todo)
-            UI::UIManager::Get().Render();
+            // Update UI (actualiza lógica de paneles, pero NO renderiza aún)
+            if (loopIteration == 1) {
+                UE_LOG_INFO(LogCategories::Core, "Calling UIManager::Update()...");
+            }
+            try {
+                UI::UIManager::Get().Update(deltaTime);
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "UIManager::Update() completed");
+                }
+            } catch (const std::exception& e) {
+                UE_LOG_ERROR(LogCategories::Core, "Exception in UIManager::Update(): %s", e.what());
+                break;
+            }
+            
+            // Render UI (crea los widgets de ImGui - DEBE estar entre NewFrame y ImGui::Render)
+            // Los paneles llaman ImGui::Begin() aquí, dentro del frame scope
+            if (loopIteration == 1) {
+                UE_LOG_INFO(LogCategories::Core, "Calling UIManager::Render()...");
+            }
+            try {
+                UI::UIManager::Get().Render();
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "UIManager::Render() completed");
+                }
+            } catch (const std::exception& e) {
+                UE_LOG_ERROR(LogCategories::UI, "Exception in UIManager::Render(): %s", e.what());
+                break;
+            } catch (...) {
+                UE_LOG_ERROR(LogCategories::UI, "Unknown exception in UIManager::Render()");
+                break;
+            }
+            
+            // ImGui::Render() DEBE llamarse DESPUÉS de todos los widgets pero ANTES del command buffer
+            // Esto prepara los datos de renderizado para GPU
+            if (UI::ImGuiWrapper::Get().IsInitialized()) {
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "Calling PrepareRender()...");
+                }
+                try {
+                    UI::ImGuiWrapper::Get().PrepareRender(); // Llama ImGui::Render()
+                    if (loopIteration == 1) {
+                        UE_LOG_INFO(LogCategories::Core, "PrepareRender() completed");
+                    }
+                } catch (const std::exception& e) {
+                    UE_LOG_ERROR(LogCategories::UI, "Exception in PrepareRender(): %s", e.what());
+                    break;
+                } catch (...) {
+                    UE_LOG_ERROR(LogCategories::UI, "Unknown exception in PrepareRender()");
+                    break;
+                }
+            }
+            
+            // Render frame (includes ImGui rendering in command buffer)
+            if (loopIteration == 1) {
+                UE_LOG_INFO(LogCategories::Core, "About to enter drawFrame scope (after PrepareRender)...");
+                fflush(stdout);  // Force flush to see logs immediately
+            }
+            {
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "Inside drawFrame scope, creating SCOPED_TIMER_SILENT...");
+                    fflush(stdout);
+                }
+                SCOPED_TIMER_SILENT("DrawFrame");
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "SCOPED_TIMER_SILENT created, calling drawFrame()...");
+                    fflush(stdout);
+                }
+                try {
+                    cube.drawFrame();
+                    if (loopIteration == 1) {
+                        UE_LOG_INFO(LogCategories::Core, "First drawFrame() completed successfully!");
+                        fflush(stdout);
+                    }
+                } catch (const std::exception& e) {
+                    UE_LOG_FATAL(LogCategories::Core, "Exception in drawFrame() (iteration %u): %s", loopIteration, e.what());
+                    fflush(stdout);
+                    break; // Salir del loop en caso de error fatal
+                } catch (...) {
+                    UE_LOG_FATAL(LogCategories::Core, "Unknown exception in drawFrame() (iteration %u)", loopIteration);
+                    fflush(stdout);
+                    break;
+                }
+                if (loopIteration == 1) {
+                    UE_LOG_INFO(LogCategories::Core, "About to exit drawFrame scope...");
+                    fflush(stdout);
+                }
+            }
+            if (loopIteration == 1) {
+                UE_LOG_INFO(LogCategories::Core, "Exited drawFrame scope successfully");
+                fflush(stdout);
+            }
+            
+            // Update textures after frame ends (safe to do transfer operations now)
+            if (UI::ImGuiWrapper::Get().IsInitialized()) {
+                UI::ImGuiWrapper::Get().PostRender();
+            }
             
             // Limit frame rate if enabled
-            frameTimer.LimitFrameRate();
+            try {
+                frameTimer.LimitFrameRate();
+            } catch (const std::exception& e) {
+                UE_LOG_ERROR(LogCategories::Core, "Exception in frameTimer.LimitFrameRate(): %s", e.what());
+                break;
+            }
             
             // Print stats every second
             frameCount++;
@@ -422,10 +608,20 @@ private:
                 }
                 statsTimer.Reset();
             }
+            
+            // Log first successful frame completion
+            if (loopIteration == 1) {
+                UE_LOG_INFO(LogCategories::Core, "First frame completed successfully! Loop continuing...");
+            }
         }
         
         UE_LOG_INFO(LogCategories::Core, "Main loop ended. Total frames: %llu", frameTimer.GetFrameCount());
-        cube.waitDeviceIdle();
+        try {
+            cube.waitDeviceIdle();
+            UE_LOG_INFO(LogCategories::Core, "Vulkan device idle, cleanup complete");
+        } catch (const std::exception& e) {
+            UE_LOG_ERROR(LogCategories::Core, "Exception during cleanup: %s", e.what());
+        }
     }
 
     void cleanup() {

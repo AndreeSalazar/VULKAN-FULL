@@ -128,5 +128,9 @@ namespace LogCategories {
     struct Asset {
         DEFINE_LOG_CATEGORY_STATIC(LogAsset);
     };
+    
+    struct UI {
+        DEFINE_LOG_CATEGORY_STATIC(LogUI);
+    };
 }
 
