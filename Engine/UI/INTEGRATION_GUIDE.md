@@ -1,310 +1,366 @@
-# Guía de Integración: ImGui + Lua
+# Guía de Integración: Sistema UI estilo Unreal Engine 5
 
-## ✅ Estado de la Integración
+## ✅ Estado Actual del Sistema
 
 ### Completado
-- ✅ **ImGui**: Descargado y estructura preparada
-- ✅ **ImGuiWrapper**: Clase wrapper para ImGui creada
-- ✅ **LuaUI**: Sistema básico de scripting Lua creado
-- ✅ **CMakeLists.txt**: Configurado para ImGui y Lua
-- ✅ **Ejemplos**: Panel de ejemplo con ImGui y script Lua de ejemplo
+- ✅ **ImGui**: Integrado con Vulkan backend
+- ✅ **ImGuiWrapper**: Clase wrapper completa para ImGui
+- ✅ **UIManager**: Sistema de gestión de paneles y ventanas
+- ✅ **Estilo UE5**: Colores oscuros, acentos azules, espaciado mejorado
+- ✅ **Paneles implementados**:
+  - DebugOverlay (overlay de debug)
+  - StatsPanel (estadísticas)
+  - ObjectHierarchy (jerarquía de objetos)
+  - ViewportPanel (vista del renderizado)
+  - DetailsPanel (propiedades de objetos)
+  - ContentBrowserPanel (explorador de archivos)
+  - ConsolePanel (consola de logs)
+- ✅ **Integración en main.cpp**: Loop completo funcional
+- ✅ **CMakeLists.txt**: Configurado correctamente
 
-### Pendiente (Configuración)
-- ⚠️ **Lua**: Requiere instalación o compilación manual
-- ⚠️ **Bindings completos**: Necesita sol2 o bindings manuales
-- ⚠️ **Integración en main.cpp**: Conectar ImGui con el render loop
+### Problemas Conocidos (⚠️ Necesita Solución)
+- ⚠️ **Texturas de fuentes**: La UI no aparece inmediatamente porque las texturas de fuentes no se actualizan correctamente
+  - **Causa**: `ImGui_ImplVulkan_UpdateTexture()` requiere operaciones fuera del render pass
+  - **Estado actual**: Se evita renderizar cuando hay texturas pendientes para evitar crashes
+  - **Impacto**: La UI puede tardar varios frames en aparecer o no aparecer
+  - **Solución pendiente**: Implementar actualización de texturas después del render pass
 
----
-
-## 📦 Instalación de Dependencias
-
-### 1. ImGui (✅ Ya descargado)
-```bash
-# Ya está en Engine/ThirdParty/imgui
-# No requiere instalación adicional
-```
-
-### 2. Lua
-
-#### Opción A: Usar paquete del sistema (Recomendado)
-```bash
-# Ubuntu/Debian
-sudo apt-get install liblua5.4-dev
-
-# Fedora
-sudo dnf install lua-devel
-
-# Arch
-sudo pacman -S lua
-```
-
-#### Opción B: Compilar desde fuente
-```bash
-cd Engine/ThirdParty
-wget http://www.lua.org/ftp/lua-5.4.6.tar.gz
-tar xzf lua-5.4.6.tar.gz
-cd lua-5.4.6
-make linux
-# Los archivos .c estarán en src/
-```
-
-### 3. sol2 (✅ Ya descargado)
-```bash
-# Ya está en Engine/ThirdParty/sol2
-# Es header-only, solo necesita include
-```
-
----
-
-## 🔧 Integración en vulkan_cube.cpp
-
-### Paso 1: Inicializar ImGui
-
-En `vulkan_cube.cpp`, después de crear el descriptor pool:
-
-```cpp
-#include "UI/ImGuiWrapper.h"
-
-// En initVulkan() o createDescriptorPool()
-void VulkanCube::initImGui() {
-    UI::ImGuiWrapper& imgui = UI::ImGuiWrapper::Get();
-    
-    // Crear descriptor pool para ImGui
-    VkDescriptorPoolSize poolSizes[] = {
-        { VK_DESCRIPTOR_TYPE_SAMPLER, 1000 },
-        { VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, 1000 },
-        { VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, 1000 },
-        { VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, 1000 },
-        { VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER, 1000 },
-        { VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, 1000 },
-        { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 1000 },
-        { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1000 },
-        { VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 1000 },
-        { VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC, 1000 },
-        { VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, 1000 }
-    };
-    
-    VkDescriptorPoolCreateInfo poolInfo = {};
-    poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-    poolInfo.flags = VK_DESCRIPTOR_POOL_CREATE_FREE_DESCRIPTOR_SET_BIT;
-    poolInfo.maxSets = 1000;
-    poolInfo.poolSizeCount = sizeof(poolSizes) / sizeof(poolSizes[0]);
-    poolInfo.pPoolSizes = poolSizes;
-    
-    VkDescriptorPool imguiDescriptorPool;
-    vkCreateDescriptorPool(device, &poolInfo, nullptr, &imguiDescriptorPool);
-    
-    // Inicializar ImGui
-    imgui.Initialize(
-        window,
-        instance,
-        physicalDevice,
-        device,
-        graphicsQueue,
-        graphicsQueueFamilyIndex,
-        renderPass,  // Necesita coincidir con tu render pass
-        imguiDescriptorPool
-    );
-}
-```
-
-### Paso 2: Renderizar ImGui
-
-En `recordCommandBuffer()` o donde renderizas:
-
-```cpp
-void VulkanCube::renderUI(VkCommandBuffer commandBuffer) {
-    UI::ImGuiWrapper& imgui = UI::ImGuiWrapper::Get();
-    if (imgui.IsInitialized()) {
-        imgui.Render(commandBuffer);
-    }
-}
-```
-
-En `drawFrame()`:
-
-```cpp
-void VulkanCube::drawFrame() {
-    // ... código existente ...
-    
-    // Antes de vkCmdEndRenderPass
-    renderUI(commandBuffers[currentFrame]);
-    
-    vkCmdEndRenderPass(commandBuffers[currentFrame]);
-    
-    // ... resto del código ...
-}
-```
-
-### Paso 3: Actualizar ImGui cada frame
-
-En `mainLoop()` de `main.cpp`, antes de renderizar:
-
-```cpp
-// En main loop
-UI::ImGuiWrapper& imgui = UI::ImGuiWrapper::Get();
-if (imgui.IsInitialized()) {
-    imgui.NewFrame();
-    
-    // Renderizar tu UI aquí
-    auto debugOverlay = std::dynamic_pointer_cast<UI::DebugOverlay_ImGui>(
-        UI::UIManager::Get().GetPanel("DebugOverlay_ImGui")
-    );
-    if (debugOverlay) {
-        debugOverlay->Render();
-    }
-}
-```
+### Pendiente para Estilo UE5 Completo
+- ⚠️ **Docking System**: Ventanas acoplables/dockables
+  - ImGui soporta docking con `ImGuiConfigFlags_DockingEnable`
+  - Requiere habilitar en `ImGuiIO::ConfigFlags`
+  - Necesita configuración de layout inicial
+- ⚠️ **Multi-Viewport**: Ventanas independientes
+  - Requiere `ImGuiConfigFlags_ViewportsEnable`
+  - Necesita soporte de plataforma adicional
+- ⚠️ **Tab System**: Sistema de tabs para ventanas múltiples
+  - Necesita implementar manejo de tabs personalizado
+  - O usar sistema de docking nativo de ImGui
+- ⚠️ **Layout System**: Sistema de layouts guardables/cargables
+  - Layouts por defecto para diferentes modos (Editor, Game, etc.)
+  - Guardar/cargar layouts desde archivo .ini
+- ⚠️ **Toolbar/Menu Bar**: Barra de herramientas superior
+  - Menú File/Edit/View/Window/Help
+  - Toolbar con herramientas comunes
+- ⚠️ **Status Bar**: Barra de estado inferior
+  - Información del sistema
+  - Indicadores de estado
+- ⚠️ **Asset Browser mejorado**: Explorador de assets más robusto
+  - Vista de árbol y lista
+  - Filtros y búsqueda
+  - Preview de assets
+- ⚠️ **Scene Hierarchy mejorado**: Jerarquía de escena
+  - Drag & drop para reordenar
+  - Multi-selección
+  - Context menu
+- ⚠️ **Details Panel mejorado**: Panel de propiedades
+  - Categorías colapsables
+  - Edición inline de valores
+  - Validación de propiedades
+- ⚠️ **Viewport mejorado**: Vista del renderizado
+  - Controles de cámara integrados
+  - Gizmos para manipular objetos
+  - Overlay de información
 
 ---
 
-## 📜 Integración de Lua
+## 🔧 Configuración Actual
 
-### Paso 1: Inicializar Lua
-
-En `main.cpp`, en `initVulkan()` o al inicio:
-
+### Estructura del Loop Principal
 ```cpp
-#include "UI/Scripting/LuaUI.h"
-
-// En initVulkan()
-UI::LuaUI::Get().Initialize();
-
-// Cargar scripts
-UI::LuaUI::Get().LoadScript("scripts/ui/example_panel.lua");
-```
-
-### Paso 2: Ejecutar funciones Lua
-
-```cpp
-// En main loop, después de NewFrame()
-UI::LuaUI::Get().CallFunction("ExamplePanel_OnRender");
-```
-
-### Paso 3: Registrar funciones C++ para Lua
-
-En `LuaUI.cpp`, en `RegisterEngineBindings()`:
-
-```cpp
-void LuaUI::RegisterEngineBindings() {
-    if (!luaState) return;
+// En main.cpp, mainLoop()
+while (!glfwWindowShouldClose(window)) {
+    // 1. Actualizar input
+    InputManager::Get().Update();
     
-    // Crear tabla Engine
-    lua_newtable(luaState);
+    // 2. ImGui: Nuevo frame
+    UI::ImGuiWrapper::Get().NewFrame();
     
-    // Engine.GetFPS()
-    lua_pushcfunction(luaState, [](lua_State* L) -> int {
-        float fps = FFrameTimer::GetGlobal()->GetFPS();
-        lua_pushnumber(L, fps);
-        return 1;
-    });
-    lua_setfield(luaState, -2, "GetFPS");
+    // 3. Actualizar datos de UI
+    // (FPS, stats, etc.)
     
-    // Engine.GetFrameCount()
-    lua_pushcfunction(luaState, [](lua_State* L) -> int {
-        uint64_t count = FFrameTimer::GetGlobal()->GetFrameCount();
-        lua_pushinteger(L, count);
-        return 1;
-    });
-    lua_setfield(luaState, -2, "GetFrameCount");
+    // 4. Actualizar lógica de UI
+    UI::UIManager::Get().Update(deltaTime);
     
-    lua_setglobal(luaState, "Engine");
-}
-```
-
----
-
-## 🎨 Ejemplo Completo de Uso
-
-### C++ Side (main.cpp)
-```cpp
-#include "UI/ImGuiWrapper.h"
-#include "UI/UIManager.h"
-#include "UI/Scripting/LuaUI.h"
-#include "UI/Panels/DebugOverlay_ImGui.h"
-
-void initUI() {
-    // Inicializar ImGui (después de Vulkan)
-    UI::ImGuiWrapper::Get().Initialize(...);
-    
-    // Inicializar Lua
-    UI::LuaUI::Get().Initialize();
-    
-    // Registrar paneles
-    UI::UIManager::Get().RegisterPanel("DebugOverlay_ImGui",
-        std::make_shared<UI::DebugOverlay_ImGui>());
-    
-    // Cargar scripts Lua
-    UI::LuaUI::Get().LoadScript("scripts/ui/example_panel.lua");
-}
-
-void renderUI() {
-    UI::ImGuiWrapper& imgui = UI::ImGuiWrapper::Get();
-    imgui.NewFrame();
-    
-    // Renderizar paneles C++
+    // 5. Renderizar widgets de ImGui (crear ventanas)
     UI::UIManager::Get().Render();
     
-    // Ejecutar scripts Lua
-    UI::LuaUI::Get().CallFunction("ExamplePanel_OnRender");
+    // 6. Preparar datos de renderizado
+    UI::ImGuiWrapper::Get().PrepareRender(); // Llama ImGui::Render()
     
-    // Render se hace en drawFrame() con imgui.Render()
+    // 7. Renderizar frame (incluye ImGui)
+    cube.drawFrame(); // Dentro: UI::ImGuiWrapper::Get().Render(commandBuffer)
+    
+    // 8. Post-render (para actualizar texturas en el futuro)
+    UI::ImGuiWrapper::Get().PostRender();
 }
 ```
 
-### Lua Side (scripts/ui/example_panel.lua)
-```lua
-function ExamplePanel_OnRender()
-    if UI:Begin("Lua Panel") then
-        local fps = Engine:GetFPS()
-        UI:Text("FPS: %.1f", fps)
-        
-        if UI:Button("Click Me") then
-            print("Button clicked!")
-        end
-    end
-    UI:End()
-end
+### Estilo UE5 Aplicado
+- **Colores**: Fondos oscuros (#1C1C1C, #141414), acentos azules (#42A0FB)
+- **Espaciado**: Generoso y consistente
+- **Bordes**: Sutiles, redondeo moderado
+- **Tipografía**: Mejorada para legibilidad
+
+---
+
+## 🚀 Próximos Pasos para Completar Estilo UE5
+
+### 1. Habilitar Docking (Alta Prioridad)
+```cpp
+// En ImGuiWrapper::Initialize()
+ImGuiIO& io = ImGui::GetIO();
+io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;  // ¡DESCOMENTAR ESTO!
+
+// Verificar que la versión de ImGui soporta docking
+// Si no está disponible, puede ser necesario actualizar ImGui
 ```
+
+**Archivo**: `Engine/UI/ImGuiWrapper.cpp`, línea ~38
+
+### 2. Configurar Layout Inicial
+```cpp
+// Crear función para configurar layout por defecto
+void ImGuiWrapper::SetupDefaultLayout() {
+    // Configurar ventanas en posiciones específicas
+    // Usar ImGui::SetNextWindowPos() y SetNextWindowSize()
+    // O usar docking para organizar automáticamente
+}
+```
+
+**Archivo nuevo**: `Engine/UI/LayoutManager.cpp`
+
+### 3. Implementar Toolbar/Menu Bar
+```cpp
+// En UIManager::Render() o nuevo panel
+void MenuBar::Render() {
+    if (ImGui::BeginMainMenuBar()) {
+        if (ImGui::BeginMenu("File")) {
+            if (ImGui::MenuItem("New Scene")) { /* ... */ }
+            if (ImGui::MenuItem("Open Scene")) { /* ... */ }
+            ImGui::Separator();
+            if (ImGui::MenuItem("Exit")) { /* ... */ }
+            ImGui::EndMenu();
+        }
+        // ... más menús
+        ImGui::EndMainMenuBar();
+    }
+}
+```
+
+**Archivo nuevo**: `Engine/UI/Panels/MenuBar.cpp`
+
+### 4. Implementar Status Bar
+```cpp
+// Panel simple en la parte inferior
+void StatusBar::Render() {
+    ImGuiViewport* viewport = ImGui::GetMainViewport();
+    ImGui::SetNextWindowPos(ImVec2(viewport->Pos.x, viewport->Pos.y + viewport->Size.y - 30));
+    ImGui::SetNextWindowSize(ImVec2(viewport->Size.x, 30));
+    
+    ImGui::Begin("StatusBar", nullptr, 
+        ImGuiWindowFlags_NoTitleBar | 
+        ImGuiWindowFlags_NoResize | 
+        ImGuiWindowFlags_NoMove |
+        ImGuiWindowFlags_NoScrollbar);
+    
+    ImGui::Text("Ready");
+    ImGui::SameLine();
+    ImGui::Text("|");
+    ImGui::SameLine();
+    ImGui::Text("FPS: %.1f", GetFPS());
+    
+    ImGui::End();
+}
+```
+
+**Archivo nuevo**: `Engine/UI/Panels/StatusBar.cpp`
+
+### 5. Mejorar Viewport con Controles
+```cpp
+// En ViewportPanel::Render()
+void ViewportPanel::Render() {
+    ImGui::Begin("Viewport");
+    
+    ImVec2 canvasSize = ImGui::GetContentRegionAvail();
+    ImVec2 canvasPos = ImGui::GetCursorScreenPos();
+    
+    // Renderizar el viewport aquí
+    // Agregar controles de cámara
+    // Agregar gizmos
+    
+    ImGui::End();
+}
+```
+
+**Archivo**: `Engine/UI/Panels/ViewportPanel.cpp`
+
+### 6. Sistema de Layouts Guardables
+```cpp
+class LayoutManager {
+public:
+    void SaveLayout(const std::string& name);
+    void LoadLayout(const std::string& name);
+    void LoadDefaultLayout();
+};
+```
+
+**Archivo nuevo**: `Engine/UI/LayoutManager.cpp`
+
+---
+
+## 🐛 Resolver Problema de Texturas
+
+### Problema Actual
+Las texturas de fuentes no se cargan correctamente porque:
+1. `ImGui_ImplVulkan_UpdateTexture()` requiere operaciones fuera del render pass
+2. `RenderDrawData()` intenta actualizar texturas dentro del render pass
+3. Actualmente se evita renderizar para prevenir crashes
+
+### Soluciones Posibles
+
+#### Opción 1: Actualizar texturas después del frame
+```cpp
+// En PostRender(), después de que termine el render pass
+void ImGuiWrapper::PostRender() {
+    // Esperar a que el device esté idle
+    // Luego actualizar texturas pendientes
+    // Esto requiere acceso a VkDevice
+}
+```
+
+#### Opción 2: Usar command buffer separado
+```cpp
+// Crear un command buffer dedicado para actualizar texturas
+// Ejecutarlo antes del render pass principal
+```
+
+#### Opción 3: Forzar actualización en inicialización
+```cpp
+// En Initialize(), después de crear el pipeline
+// Forzar la actualización de texturas una vez
+// Antes de comenzar el loop principal
+```
+
+### Implementación Sugerida (Opción 3)
+Modificar `ImGuiWrapper::Initialize()` para forzar la actualización inicial de texturas:
+```cpp
+bool ImGuiWrapper::Initialize(...) {
+    // ... código existente ...
+    
+    // Después de inicializar, forzar actualización de texturas
+    ImGui::SetCurrentContext(imguiContext);
+    ImGui::NewFrame();
+    ImGui::EndFrame();  // Esto debería construir las texturas
+    
+    // Ahora obtener draw data y actualizar texturas
+    ImGui::Render();
+    ImDrawData* drawData = ImGui::GetDrawData();
+    if (drawData && drawData->Textures) {
+        for (ImTextureData* tex : *drawData->Textures) {
+            if (tex->Status != ImTextureStatus_OK) {
+                ImGui_ImplVulkan_UpdateTexture(tex);
+            }
+        }
+    }
+    
+    // Limpiar el frame de prueba
+    ImGui::EndFrame();
+    
+    return true;
+}
+```
+
+---
+
+## 📋 Checklist de Implementación
+
+### Fase 1: Resolver Problemas Básicos
+- [ ] **Resolver problema de texturas** (CRÍTICO)
+  - Implementar actualización forzada en inicialización
+  - O implementar actualización post-frame segura
+- [ ] **Verificar que UI aparece correctamente**
+- [ ] **Asegurar que no hay crashes**
+
+### Fase 2: Docking y Layouts
+- [ ] Habilitar `ImGuiConfigFlags_DockingEnable`
+- [ ] Crear `LayoutManager` para manejar layouts
+- [ ] Implementar layout por defecto
+- [ ] Sistema de guardar/cargar layouts
+- [ ] Layouts presets (Editor, Game, Minimal)
+
+### Fase 3: Componentes UE5
+- [ ] MenuBar (File, Edit, View, Window, Help)
+- [ ] Toolbar (herramientas comunes)
+- [ ] StatusBar (info del sistema)
+- [ ] Mejorar Viewport (controles, gizmos)
+- [ ] Mejorar ContentBrowser (filtros, búsqueda)
+- [ ] Mejorar Hierarchy (drag & drop, multi-select)
+- [ ] Mejorar Details (categorías, validación)
+
+### Fase 4: Features Avanzadas
+- [ ] Multi-viewport support
+- [ ] Tab system personalizado
+- [ ] Hotkeys configurables
+- [ ] Themes personalizables
+- [ ] Plugin system para paneles
+- [ ] Hot-reload de layouts
+
+---
+
+## 📚 Referencias y Recursos
+
+### Documentación
+- **ImGui**: https://github.com/ocornut/imgui
+- **ImGui Docking**: https://github.com/ocornut/imgui/wiki/Docking
+- **ImGui Vulkan Backend**: `Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.h`
+- **Unreal Engine UI Style Guide**: Referencias visuales de UE5
+
+### Archivos Clave del Proyecto
+- `Engine/UI/ImGuiWrapper.cpp`: Wrapper principal de ImGui
+- `Engine/UI/UIManager.cpp`: Gestión de paneles y ventanas
+- `Engine/UI/Panels/`: Todos los paneles implementados
+- `Source/main.cpp`: Loop principal donde se integra todo
+
+### Ejemplos de Código
+- Ver `Engine/ThirdParty/imgui/examples/example_glfw_vulkan/` para ejemplos oficiales
+- Ver paneles existentes como referencia para nuevos paneles
 
 ---
 
 ## 🔍 Troubleshooting
 
-### Error: "imgui.h: No such file"
-- Verifica que `Engine/ThirdParty/imgui` existe
-- Verifica `CMakeLists.txt` incluye `${IMGUI_ROOT}`
+### La UI no aparece
+1. **Verificar logs**: Buscar mensajes sobre texturas pendientes
+2. **Verificar texturas**: `[ImGuiWrapper::Render] Texture X has pending status`
+3. **Esperar varios frames**: Puede tardar en cargar texturas
+4. **Verificar inicialización**: Asegurar que `ImGuiWrapper::Initialize()` se llama correctamente
 
-### Error: "lua.h: No such file"
-- Instala Lua: `sudo apt-get install liblua5.4-dev`
-- O compila desde fuente (ver arriba)
+### Crashes al renderizar
+1. **Verificar render pass**: ImGui debe renderizarse dentro de un render pass activo
+2. **Verificar texturas**: No intentar actualizar dentro del render pass
+3. **Verificar command buffer**: Asegurar que es válido y está grabando
 
-### ImGui no se renderiza
-- Verifica que `imgui.NewFrame()` se llama antes de `Begin()`
-- Verifica que `imgui.Render()` se llama después de `NewFrame()`
-- Verifica que el render pass es compatible
-
-### Lua scripts no funcionan
-- Verifica que Lua está compilado e incluido
-- Verifica que los bindings están registrados
-- Revisa logs para errores de Lua
+### Docking no funciona
+1. **Verificar flag**: `ImGuiConfigFlags_DockingEnable` debe estar habilitado
+2. **Verificar versión**: ImGui debe ser versión reciente (1.89+)
+3. **Verificar que no se deshabilita**: Asegurar que el flag no se sobrescribe después
 
 ---
 
-## 📚 Recursos
+## ✅ Estado Final Objetivo
 
-- **ImGui Documentation**: https://github.com/ocornut/imgui
-- **ImGui Vulkan Backend**: `Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.h`
-- **Lua Manual**: https://www.lua.org/manual/5.4/
-- **sol2 Documentation**: https://thephd.github.io/sol2/
+Un sistema UI completo estilo Unreal Engine 5 con:
+- ✅ Docking de ventanas
+- ✅ Layouts configurables
+- ✅ Menu bar y toolbar
+- ✅ Status bar
+- ✅ Paneles mejorados (Viewport, Content Browser, Hierarchy, Details)
+- ✅ Sistema de temas
+- ✅ Hotkeys configurables
+- ✅ Sin crashes ni problemas de texturas
 
 ---
 
-## ✅ Próximos Pasos
-
-1. ✅ Integrar ImGui en `vulkan_cube.cpp`
-2. ✅ Completar bindings Lua con sol2
-3. ✅ Crear más paneles de ejemplo
-4. ✅ Sistema de hot-reload para scripts Lua
-5. ✅ Editor visual para crear UI
-
+**Última actualización**: Después de implementar estilo UE5 básico y resolver problemas de texturas  
+**Próximo objetivo**: Habilitar docking y completar componentes principales

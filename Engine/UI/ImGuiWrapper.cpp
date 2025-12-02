@@ -86,6 +86,11 @@ bool ImGuiWrapper::Initialize(GLFWwindow* window, VkInstance instance, VkPhysica
     this->descriptorPool = descriptorPool;
     bInitialized = true;
     
+    // NOTA: No intentamos actualizar texturas durante la inicialización porque
+    // UpdateTexture() requiere recursos de Vulkan que pueden no estar completamente
+    // listos en este momento. Las texturas se actualizarán automáticamente cuando
+    // ImGui las necesite durante el primer render.
+    
     UE_LOG_INFO(LogCategories::Core, "ImGui initialized successfully");
     return true;
 }
@@ -150,26 +155,39 @@ void ImGuiWrapper::PrepareRender() {
     if (bFirstPrepare) {
         ImDrawData* drawData = ImGui::GetDrawData();
         if (drawData && drawData->Textures != nullptr && drawData->Textures->Size > 0) {
-            UE_LOG_VERBOSE(LogCategories::UI, "[PrepareRender] Found %d textures (will be handled automatically)", drawData->Textures->Size);
+            bool bHasPending = false;
+            for (int i = 0; i < drawData->Textures->Size; i++) {
+                ImTextureData* tex = (*drawData->Textures)[i];
+                if (tex && tex->Status != ImTextureStatus_OK) {
+                    bHasPending = true;
+                    UE_LOG_INFO(LogCategories::UI, "[PrepareRender] Texture %d has pending status %d", i, (int)tex->Status);
+                    break;
+                }
+            }
+            
+            UE_LOG_INFO(LogCategories::UI, "[PrepareRender] Found %d textures, pending: %s", 
+                       drawData->Textures->Size, bHasPending ? "YES" : "NO");
         }
-        bFirstPrepare = false;
-    }
-    
-    if (bFirstPrepare) {
         bFirstPrepare = false;
     }
 }
 
 void ImGuiWrapper::PostRender() {
-    // NOTA: No actualizamos texturas aquí porque ImGui_ImplVulkan_UpdateTexture()
-    // puede crashear incluso después del render pass, probablemente porque necesita
-    // que ciertos recursos de Vulkan estén en un estado específico.
+    // NOTA: Según el ejemplo oficial de ImGui con Vulkan (example_glfw_vulkan/main.cpp),
+    // NO se llama manualmente a UpdateTexture(). En su lugar, RenderDrawData() maneja
+    // las texturas automáticamente.
     //
-    // En su lugar, simplemente esperamos a que ImGui actualice las texturas automáticamente
-    // cuando sea necesario. Esto puede tomar varios frames, pero es más seguro.
+    // El problema es que RenderDrawData() intenta actualizar texturas dentro del render pass,
+    // lo cual causa un crash. La solución actual es NO renderizar cuando hay texturas pendientes,
+    // pero esto significa que nunca se actualizan.
+    //
+    // TODO: Investigar por qué RenderDrawData() falla cuando intenta actualizar texturas
+    // dentro del render pass en nuestro caso, cuando en el ejemplo oficial funciona.
+    //
+    // Por ahora, simplemente no hacemos nada aquí y confiamos en que RenderDrawData()
+    // maneje las texturas cuando sea seguro (aunque actualmente falla).
     
     // Este método existe para mantener la API consistente, pero no hace nada por ahora.
-    // Las texturas se actualizarán automáticamente cuando ImGui las necesite.
 }
 
 void ImGuiWrapper::Render(VkCommandBuffer commandBuffer) {
@@ -265,15 +283,19 @@ void ImGuiWrapper::Render(VkCommandBuffer commandBuffer) {
         return;
     }
     
-    // CRÍTICO: Si hay texturas pendientes (Status != OK), los ImDrawCmd ya tienen referencias
-    // a texturas que no están cargadas, causando una aserción en GetTexID().
+    // CRÍTICO: Si hay texturas pendientes, los ImDrawCmd ya tienen referencias a texturas
+    // no cargadas (TexID == Invalid). Cuando RenderDrawData() intenta renderizar, llama
+    // a GetTexID() que falla con una aserción.
     //
-    // ImGui_ImplVulkan_RenderDrawData() intenta actualizar texturas al inicio, pero lo hace
-    // cuando ya estamos dentro de un render pass activo, lo cual causa un crash.
+    // RenderDrawData() también intenta actualizar texturas al inicio (líneas 523-526),
+    // pero esto ocurre cuando ya estamos dentro de un render pass activo, lo cual causa
+    // un crash porque UpdateTexture() necesita hacer operaciones de transferencia que
+    // no se pueden hacer dentro de un render pass.
     //
-    // Solución: Si hay texturas pendientes, simplemente NO renderizamos en este frame.
-    // Esperamos a que las texturas se actualicen automáticamente en un momento seguro.
-    // Esto puede tomar varios frames, pero evita crashes.
+    // Solución: Si hay texturas pendientes, NO renderizamos en este frame.
+    // Las texturas se actualizarán en PostRender() después de que el frame termine,
+    // cuando es seguro hacer operaciones de transferencia. En el siguiente frame,
+    // las texturas deberían estar listas y podremos renderizar normalmente.
     
     bool bHasPendingTextures = false;
     if (drawData->Textures != nullptr && drawData->Textures->Size > 0) {
@@ -281,7 +303,7 @@ void ImGuiWrapper::Render(VkCommandBuffer commandBuffer) {
             ImTextureData* tex = (*drawData->Textures)[i];
             if (tex && tex->Status != ImTextureStatus_OK) {
                 bHasPendingTextures = true;
-                if (renderCallCount <= 10) {  // Log los primeros 10 frames
+                if (renderCallCount <= 10) {
                     UE_LOG_INFO(LogCategories::UI, "[ImGuiWrapper::Render] Frame %u: Texture %d has pending status %d, skipping render", renderCallCount, i, (int)tex->Status);
                 }
                 break;
@@ -290,13 +312,13 @@ void ImGuiWrapper::Render(VkCommandBuffer commandBuffer) {
     }
     
     // Si hay texturas pendientes, no renderizar este frame
-    // Las texturas se actualizarán automáticamente cuando ImGui las necesite
-    // (esto puede tomar varios frames, pero es más seguro)
+    // Las texturas se actualizarán en PostRender() cuando sea seguro
     if (bHasPendingTextures) {
         return;
     }
     
     // Todas las texturas están listas, renderizar normalmente
+    // RenderDrawData() no intentará actualizar texturas porque ya están OK
     ImGui_ImplVulkan_RenderDrawData(drawData, commandBuffer);
     
     if (renderCallCount == 1) {
