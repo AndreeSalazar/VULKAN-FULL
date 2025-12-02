@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/VulkanCube.dir/main.cpp.o CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o -o VulkanCube  -lvulkan /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 -lpthread -ldl -lX11 
