@@ -1,0 +1,162 @@
+[14:49:04.060] LogCore: Log: === Engine Log Started ===
+[14:49:04.060] LogCore: Log: === Vulkan Engine Starting ===
+[14:49:04.060] LogCore: Log: Initializing engine systems...
+[14:49:04.060] LogCore: Log: Starting application main loop...
+[14:49:04.060] LogCore: Log: Initializing GLFW...
+[14:49:04.065] LogCore: Log: Primary monitor resolution: 1920x1080
+[14:49:04.065] LogCore: Log: Creating window: 1920x1080 (Min: 800x600, Max: 1920x1080)
+[14:49:04.141] LogCore: Log: Window created successfully at position (0, 0)
+[14:49:04.141] LogRHI: Log: Initializing Vulkan...
+[14:49:04.560] LogRHI: Log: Vulkan initialized successfully
+[14:49:04.560] LogCore: Log: Camera initialized - Position: (0, 0, -3) | Aspect: 2.05
+[14:49:04.560] LogCore: Log: Entering main loop...
+[14:49:04.560] LogCore: Log: Controls: WASD - Move | Mouse - Look | ESC - Lock/Unlock Mouse | F11 - Maximize/Restore | TAB - Toggle UI
+[14:49:04.560] LogCore: Log: Supported resolutions: 800x600 to 1920x1080
+[14:49:04.560] LogCore: Log: Initializing UIManager...
+[14:49:04.560] LogCore: Log: UIManager initialized successfully
+[14:49:04.560] LogCore: Verbose: Registered UI Panel: DebugOverlay
+[14:49:04.560] LogCore: Verbose: Registered UI Window: StatsPanel
+[14:49:04.560] LogCore: Verbose: Registered UI Window: ObjectHierarchy
+[14:49:04.560] LogCore: Verbose: Framebuffer resized to 1920x935 (Aspect: 2.05)
+[14:49:04.560] LogCore: Verbose: Window resized to 1920x935 (Framebuffer: 1920x935, Aspect: 2.05)
+[14:49:04.870] LogRHI: Log: Swap chain recreated with resolution: 1920x935
+[14:49:04.884] LogCore: Log: Framebuffer resized - New size: 1920x935
+[14:49:05.567] LogCore: Log: FPS: 3017.42 | Delta: 16.52ms | Frame: 44 | Time: 1.49s | Camera: (0.00, 0.00, -3.00)
+[14:49:05.834] LogCore: Verbose: === Debug Overlay ===
+FPS: 60.60
+Delta: 16.50ms
+Frames: 60
+Time: 1.76s
+Camera: (0.00, 0.00, -3.00)
+Render Queue: 0 commands
+
+[14:49:06.584] LogCore: Log: FPS: 60.02 | Delta: 16.71ms | Frame: 105 | Time: 2.51s | Camera: (0.00, 0.00, -3.00)
+[14:49:06.601] LogCore: Log: === F11 PRESSED ===
+[14:49:06.601] LogCore: Log: Current fullscreen state: NO
+[14:49:06.601] LogCore: Log: Maximizing to fullscreen...
+[14:49:06.601] LogCore: Log: Setting fullscreen to 1920x1080
+[14:49:06.700] LogCore: Log: Framebuffer resized (fullscreen) to 1920x1080 (Aspect: 1.78)
+[14:49:06.701] LogCore: Verbose: Window resized to 1920x1080 (Framebuffer: 1920x1080, Aspect: 1.78)
+[14:49:06.701] LogCore: Log: Window maximized to fullscreen 1920x1080 (Framebuffer: 1920x1080)
+[14:49:06.701] LogCore: Log: Framebuffer resized - New size: 1920x1080
+[14:49:07.020] LogRHI: Log: Swap chain recreated with resolution: 1920x1080
+[14:49:07.023] LogCore: Verbose: === Debug Overlay ===
+FPS: 3970.05
+Delta: 0.25ms
+Frames: 120
+Time: 2.96s
+Camera: (0.00, 0.00, -2.98)
+Render Queue: 0 commands
+
+[14:49:07.351] LogCore: Verbose: === Debug Overlay ===
+FPS: 60.01
+Delta: 16.66ms
+Frames: 180
+Time: 3.27s
+Camera: (0.00, 0.00, -0.49)
+Render Queue: 0 commands
+
+[14:49:07.584] LogCore: Log: FPS: 1856.08 | Delta: 16.68ms | Frame: 194 | Time: 3.51s | Camera: (0.00, 0.00, -0.63)
+[14:49:08.351] LogCore: Verbose: === Debug Overlay ===
+FPS: 61.27
+Delta: 16.32ms
+Frames: 240
+Time: 4.27s
+Camera: (-0.27, 0.00, -4.09)
+Render Queue: 0 commands
+
+[14:49:08.600] LogCore: Log: FPS: 60.03 | Delta: 16.68ms | Frame: 255 | Time: 4.52s | Camera: (1.60, 0.00, -3.56)
+[14:49:09.433] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.99
+Delta: 16.67ms
+Frames: 300
+Time: 5.36s
+Camera: (-0.93, 0.00, -4.75)
+Render Queue: 0 commands
+
+[14:49:09.617] LogCore: Log: FPS: 583.84 | Delta: 16.66ms | Frame: 311 | Time: 5.54s | Camera: (0.01, 0.00, -4.75)
+[14:49:10.434] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.88
+Delta: 16.70ms
+Frames: 360
+Time: 6.36s
+Camera: (0.27, 0.00, -4.22)
+Render Queue: 0 commands
+
+[14:49:10.617] LogCore: Log: FPS: 59.98 | Delta: 16.66ms | Frame: 371 | Time: 6.54s | Camera: (0.27, 0.00, -4.22)
+[14:49:11.434] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.99
+Delta: 16.67ms
+Frames: 420
+Time: 7.36s
+Camera: (-1.20, 0.00, -2.75)
+Render Queue: 0 commands
+
+[14:49:11.620] LogCore: Log: FPS: 59.87 | Delta: 16.65ms | Frame: 431 | Time: 7.54s | Camera: (-0.65, 0.00, -3.30)
+[14:49:12.436] LogCore: Verbose: === Debug Overlay ===
+FPS: 60.00
+Delta: 16.67ms
+Frames: 480
+Time: 8.36s
+Camera: (-1.70, 0.00, -6.64)
+Render Queue: 0 commands
+
+[14:49:12.638] LogCore: Log: FPS: 60.11 | Delta: 16.62ms | Frame: 492 | Time: 8.56s | Camera: (-1.70, 0.00, -5.04)
+[14:49:13.436] LogCore: Verbose: === Debug Overlay ===
+FPS: 60.06
+Delta: 16.65ms
+Frames: 540
+Time: 9.36s
+Camera: (2.84, 0.00, -5.02)
+Render Queue: 0 commands
+
+[14:49:13.653] LogCore: Log: FPS: 60.25 | Delta: 16.67ms | Frame: 553 | Time: 9.58s | Camera: (2.70, 0.00, -6.75)
+[14:49:14.436] LogCore: Verbose: === Debug Overlay ===
+FPS: 53.73
+Delta: 18.61ms
+Frames: 600
+Time: 10.36s
+Camera: (-0.75, 0.00, -5.82)
+Render Queue: 0 commands
+
+[14:49:14.670] LogCore: Log: FPS: 60.16 | Delta: 16.71ms | Frame: 614 | Time: 10.59s | Camera: (-0.63, 0.00, -5.57)
+[14:49:15.436] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.98
+Delta: 16.67ms
+Frames: 660
+Time: 11.36s
+Camera: (0.05, 0.00, -2.65)
+Render Queue: 0 commands
+
+[14:49:15.670] LogCore: Log: FPS: 60.09 | Delta: 16.56ms | Frame: 674 | Time: 11.59s | Camera: (0.05, 0.00, -1.18)
+[14:49:16.436] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.95
+Delta: 16.68ms
+Frames: 720
+Time: 12.36s
+Camera: (0.05, 0.00, 1.35)
+Render Queue: 0 commands
+
+[14:49:16.672] LogCore: Log: FPS: 60.16 | Delta: 16.70ms | Frame: 734 | Time: 12.59s | Camera: (0.05, 0.00, 0.95)
+[14:49:17.436] LogCore: Verbose: === Debug Overlay ===
+FPS: 68.24
+Delta: 14.65ms
+Frames: 780
+Time: 13.36s
+Camera: (0.05, 0.00, -5.18)
+Render Queue: 0 commands
+
+[14:49:17.686] LogCore: Log: FPS: 60.27 | Delta: 16.68ms | Frame: 795 | Time: 13.61s | Camera: (-0.08, 0.00, -5.32)
+[14:49:18.436] LogCore: Verbose: === Debug Overlay ===
+FPS: 59.93
+Delta: 16.69ms
+Frames: 840
+Time: 14.36s
+Camera: (-0.75, 0.00, -4.38)
+Render Queue: 0 commands
+
+[14:49:18.703] LogCore: Log: FPS: 60.17 | Delta: 14.72ms | Frame: 856 | Time: 14.63s | Camera: (-0.75, 0.00, -4.38)
+[14:49:18.920] LogCore: Log: Main loop ended. Total frames: 869
+[14:49:18.953] LogCore: Log: Shutting down UIManager...
+[14:49:18.953] LogCore: Log: UIManager shutdown complete
+[14:49:19.289] LogCore: Log: Application main loop ended normally

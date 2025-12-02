@@ -63,6 +63,8 @@ CMAKE_BINARY_DIR = "/home/andre/Documentos/VULKAN FULL/build"
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/UObjectDemo.dir/all
+all: CMakeFiles/ThreadingDemo.dir/all
 all: CMakeFiles/VulkanCube.dir/all
 .PHONY : all
 
@@ -71,8 +73,62 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/UObjectDemo.dir/clean
+clean: CMakeFiles/ThreadingDemo.dir/clean
 clean: CMakeFiles/VulkanCube.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/UObjectDemo.dir
+
+# All Build rule for target.
+CMakeFiles/UObjectDemo.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38 "Built target UObjectDemo"
+.PHONY : CMakeFiles/UObjectDemo.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/UObjectDemo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" 19
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/UObjectDemo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" 0
+.PHONY : CMakeFiles/UObjectDemo.dir/rule
+
+# Convenience name for target.
+UObjectDemo: CMakeFiles/UObjectDemo.dir/rule
+.PHONY : UObjectDemo
+
+# clean rule for target.
+CMakeFiles/UObjectDemo.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/UObjectDemo.dir/build.make CMakeFiles/UObjectDemo.dir/clean
+.PHONY : CMakeFiles/UObjectDemo.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ThreadingDemo.dir
+
+# All Build rule for target.
+CMakeFiles/ThreadingDemo.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19 "Built target ThreadingDemo"
+.PHONY : CMakeFiles/ThreadingDemo.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ThreadingDemo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" 19
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ThreadingDemo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" 0
+.PHONY : CMakeFiles/ThreadingDemo.dir/rule
+
+# Convenience name for target.
+ThreadingDemo: CMakeFiles/ThreadingDemo.dir/rule
+.PHONY : ThreadingDemo
+
+# clean rule for target.
+CMakeFiles/ThreadingDemo.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ThreadingDemo.dir/build.make CMakeFiles/ThreadingDemo.dir/clean
+.PHONY : CMakeFiles/ThreadingDemo.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/VulkanCube.dir
@@ -81,12 +137,12 @@ clean: CMakeFiles/VulkanCube.dir/clean
 CMakeFiles/VulkanCube.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=1,2,3 "Built target VulkanCube"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59 "Built target VulkanCube"
 .PHONY : CMakeFiles/VulkanCube.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/VulkanCube.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/VulkanCube.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" 0
 .PHONY : CMakeFiles/VulkanCube.dir/rule

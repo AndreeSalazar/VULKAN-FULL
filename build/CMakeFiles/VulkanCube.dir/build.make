@@ -69,48 +69,336 @@ include CMakeFiles/VulkanCube.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/VulkanCube.dir/flags.make
 
-CMakeFiles/VulkanCube.dir/main.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
-CMakeFiles/VulkanCube.dir/main.cpp.o: ../main.cpp
-CMakeFiles/VulkanCube.dir/main.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/VulkanCube.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/main.cpp.o -MF CMakeFiles/VulkanCube.dir/main.cpp.o.d -o CMakeFiles/VulkanCube.dir/main.cpp.o -c "/home/andre/Documentos/VULKAN FULL/main.cpp"
+CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o: ../Engine/Core/Log.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Log.cpp"
 
-CMakeFiles/VulkanCube.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/main.cpp" > CMakeFiles/VulkanCube.dir/main.cpp.i
+CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Log.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.i
 
-CMakeFiles/VulkanCube.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/main.cpp" -o CMakeFiles/VulkanCube.dir/main.cpp.s
+CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Log.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.s
 
-CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
-CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o: ../vulkan_cube.cpp
-CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o -MF CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o.d -o CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o -c "/home/andre/Documentos/VULKAN FULL/vulkan_cube.cpp"
+CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o: ../Engine/Core/Timer.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Timer.cpp"
 
-CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/vulkan_cube.cpp" > CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.i
+CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Timer.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.i
 
-CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/vulkan_cube.cpp" -o CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.s
+CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Timer.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o: ../Engine/Core/Math/Vector.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Vector.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Vector.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Vector.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o: ../Engine/Core/Math/Matrix.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Matrix.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Matrix.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Matrix.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o: ../Engine/Core/Math/Quaternion.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Quaternion.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Quaternion.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Quaternion.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o: ../Engine/Core/Math/Transform.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Transform.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Transform.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Math/Transform.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o: ../Engine/Core/Object/UObject.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UObject.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UObject.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UObject.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o: ../Engine/Core/Object/UClass.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UClass.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UClass.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UClass.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o: ../Engine/Core/Object/UObjectDemo.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UObjectDemo.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UObjectDemo.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Object/UObjectDemo.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o: ../Engine/Core/Threading/RenderCommandQueue.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Threading/RenderCommandQueue.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Threading/RenderCommandQueue.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Threading/RenderCommandQueue.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o: ../Engine/Core/Threading/ThreadManager.cpp
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Core/Threading/ThreadManager.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Core/Threading/ThreadManager.cpp" > CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Core/Threading/ThreadManager.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o: ../Engine/UI/UIBase.cpp
+CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/UI/UIBase.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/UI/UIBase.cpp" > CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/UI/UIBase.cpp" -o CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o: ../Engine/UI/UIManager.cpp
+CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/UI/UIManager.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/UI/UIManager.cpp" > CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/UI/UIManager.cpp" -o CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o: ../Engine/UI/Panels/DebugOverlay.cpp
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/DebugOverlay.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/DebugOverlay.cpp" > CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/DebugOverlay.cpp" -o CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o: ../Engine/UI/Panels/StatsPanel.cpp
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/StatsPanel.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/StatsPanel.cpp" > CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/StatsPanel.cpp" -o CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o: ../Engine/UI/Panels/ObjectHierarchyPanel.cpp
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/ObjectHierarchyPanel.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/ObjectHierarchyPanel.cpp" > CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/UI/Panels/ObjectHierarchyPanel.cpp" -o CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o: ../Engine/Rendering/Camera.cpp
+CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Rendering/Camera.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Rendering/Camera.cpp" > CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Rendering/Camera.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o: ../Engine/RHI/vulkan_cube.cpp
+CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/RHI/vulkan_cube.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/RHI/vulkan_cube.cpp" > CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/RHI/vulkan_cube.cpp" -o CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.s
+
+CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o: ../Engine/Input/InputManager.cpp
+CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o -MF CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o.d -o CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Engine/Input/InputManager.cpp"
+
+CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Engine/Input/InputManager.cpp" > CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.i
+
+CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Engine/Input/InputManager.cpp" -o CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.s
+
+CMakeFiles/VulkanCube.dir/Source/main.cpp.o: CMakeFiles/VulkanCube.dir/flags.make
+CMakeFiles/VulkanCube.dir/Source/main.cpp.o: ../Source/main.cpp
+CMakeFiles/VulkanCube.dir/Source/main.cpp.o: CMakeFiles/VulkanCube.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/VulkanCube.dir/Source/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/VulkanCube.dir/Source/main.cpp.o -MF CMakeFiles/VulkanCube.dir/Source/main.cpp.o.d -o CMakeFiles/VulkanCube.dir/Source/main.cpp.o -c "/home/andre/Documentos/VULKAN FULL/Source/main.cpp"
+
+CMakeFiles/VulkanCube.dir/Source/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/VulkanCube.dir/Source/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/andre/Documentos/VULKAN FULL/Source/main.cpp" > CMakeFiles/VulkanCube.dir/Source/main.cpp.i
+
+CMakeFiles/VulkanCube.dir/Source/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/VulkanCube.dir/Source/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/andre/Documentos/VULKAN FULL/Source/main.cpp" -o CMakeFiles/VulkanCube.dir/Source/main.cpp.s
 
 # Object files for target VulkanCube
 VulkanCube_OBJECTS = \
-"CMakeFiles/VulkanCube.dir/main.cpp.o" \
-"CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o"
+"CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o" \
+"CMakeFiles/VulkanCube.dir/Source/main.cpp.o"
 
 # External object files for target VulkanCube
 VulkanCube_EXTERNAL_OBJECTS =
 
-VulkanCube: CMakeFiles/VulkanCube.dir/main.cpp.o
-VulkanCube: CMakeFiles/VulkanCube.dir/vulkan_cube.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Log.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Timer.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Math/Vector.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Math/Matrix.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Math/Quaternion.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Math/Transform.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObject.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Object/UClass.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Object/UObjectDemo.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Threading/RenderCommandQueue.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Core/Threading/ThreadManager.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/UI/UIBase.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DebugOverlay.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Engine/Input/InputManager.cpp.o
+VulkanCube: CMakeFiles/VulkanCube.dir/Source/main.cpp.o
 VulkanCube: CMakeFiles/VulkanCube.dir/build.make
 VulkanCube: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 VulkanCube: CMakeFiles/VulkanCube.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable VulkanCube"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/andre/Documentos/VULKAN FULL/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable VulkanCube"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/VulkanCube.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
