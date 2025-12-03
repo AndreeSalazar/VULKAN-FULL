@@ -1,0 +1,22 @@
+[package]
+name = "engine-ui"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "engine_ui"
+crate-type = ["cdylib", "staticlib"]  # Compilar como biblioteca compartida y estática
+
+[dependencies]
+egui = "0.24"
+ash = "0.37"  # Vulkan bindings para Rust
+gpu-allocator = "0.22"  # Para manejo de memoria GPU
+# egui-ash no existe como crate separado, usaremos ash directamente
+
+[build-dependencies]
+cbindgen = "0.24"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

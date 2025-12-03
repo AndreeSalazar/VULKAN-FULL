@@ -12,7 +12,9 @@
 #include "UI/Panels/DetailsPanel.h"
 #include "UI/Panels/ContentBrowserPanel.h"
 #include "UI/Panels/ConsolePanel.h"
-#include "UI/ImGuiWrapper.h"
+#include "UI/Panels/MenuBar.h"
+#include "UI/Panels/StatusBar.h"
+#include "UI/EGUIWrapper.h"
 #include "Rendering/Camera.h"
 #include "Input/InputManager.h"
 
@@ -188,9 +190,9 @@ private:
         
         UE_LOG_INFO(LogCategories::Core, "Camera initialized - Position: (0, 0, -3) | Aspect: %.2f", aspectRatio);
         
-        // Initialize ImGui
-        UE_LOG_INFO(LogCategories::UI, "Initializing ImGui...");
-        bool imguiInitialized = UI::ImGuiWrapper::Get().Initialize(
+        // Initialize eGUI (Rust)
+        UE_LOG_INFO(LogCategories::UI, "Initializing eGUI (Rust)...");
+        bool eguiInitialized = UI::EGUIWrapper::Get().Initialize(
             window,
             cube.GetInstance(),
             cube.GetPhysicalDevice(),
@@ -203,12 +205,10 @@ private:
             3   // imageCount (MAX_FRAMES_IN_FLIGHT, típicamente 2-3)
         );
         
-        if (imguiInitialized) {
-            // Aplicar estilo Unreal Engine 5
-            UI::ImGuiWrapper::Get().SetStyleUE5();
-            UE_LOG_INFO(LogCategories::UI, "ImGui initialized successfully with UE5 style");
+        if (eguiInitialized) {
+            UE_LOG_INFO(LogCategories::UI, "eGUI initialized successfully");
         } else {
-            UE_LOG_WARNING(LogCategories::UI, "Failed to initialize ImGui, continuing without UI");
+            UE_LOG_WARNING(LogCategories::UI, "Failed to initialize eGUI, continuing without UI");
         }
     }
 
@@ -231,7 +231,17 @@ private:
         UI::UIManager::Get().RegisterWindow("ContentBrowser", std::make_shared<UI::ContentBrowserPanel>());
         UI::UIManager::Get().RegisterWindow("Console", std::make_shared<UI::ConsolePanel>());
         
-        // Mostrar paneles principales por defecto
+        // Registrar componentes UE5
+        UI::UIManager::Get().RegisterPanel("MenuBar", std::make_shared<UI::MenuBar>());
+        UI::UIManager::Get().RegisterPanel("StatusBar", std::make_shared<UI::StatusBar>());
+        
+        // Mostrar paneles principales por defecto (todos visibles desde el inicio)
+        UI::UIManager::Get().ShowWindow("Viewport");
+        UI::UIManager::Get().ShowWindow("Details");
+        UI::UIManager::Get().ShowWindow("ContentBrowser");
+        UI::UIManager::Get().ShowWindow("Console");
+        UI::UIManager::Get().ShowWindow("StatsPanel");
+        UI::UIManager::Get().ShowWindow("ObjectHierarchy");
         UI::UIManager::Get().SetShowDebugOverlay(true);
         UI::UIManager::Get().ShowWindow("Viewport");
         UI::UIManager::Get().ShowWindow("Details");
@@ -278,15 +288,20 @@ private:
                 UE_LOG_INFO(LogCategories::Core, "Mouse %s", bCameraLocked ? "LOCKED" : "UNLOCKED");
             }
             
-            // Handle TAB key to toggle UI
-            static bool uiVisible = true;
-            if (InputManager::Get().IsKeyJustPressed(Keys::Tab)) {
-                uiVisible = !uiVisible;
-                UI::UIManager::Get().SetShowDebugOverlay(uiVisible);
-                UI::UIManager::Get().ToggleWindow("StatsPanel");
-                UI::UIManager::Get().ToggleWindow("ObjectHierarchy");
-                UE_LOG_INFO(LogCategories::Core, "UI %s", uiVisible ? "SHOWN" : "HIDDEN");
-            }
+        // Handle TAB key to toggle UI
+        static bool uiVisible = true;
+        if (InputManager::Get().IsKeyJustPressed(Keys::Tab)) {
+            uiVisible = !uiVisible;
+            UI::UIManager::Get().SetShowDebugOverlay(uiVisible);
+            // Toggle all windows
+            UI::UIManager::Get().ToggleWindow("StatsPanel");
+            UI::UIManager::Get().ToggleWindow("ObjectHierarchy");
+            UI::UIManager::Get().ToggleWindow("Viewport");
+            UI::UIManager::Get().ToggleWindow("Details");
+            UI::UIManager::Get().ToggleWindow("ContentBrowser");
+            UI::UIManager::Get().ToggleWindow("Console");
+            UE_LOG_INFO(LogCategories::Core, "UI %s", uiVisible ? "SHOWN" : "HIDDEN");
+        }
             
             // Handle F11 for maximize/restore
             // Use direct GLFW check since F11 might be intercepted by window manager
@@ -395,6 +410,12 @@ private:
                 if (fbWidth > 0 && fbHeight > 0) {
                     // Update camera aspect ratio
                     camera.SetAspectRatio((float)fbWidth / (float)fbHeight);
+                    
+                    // Update eGUI screen size
+                    if (UI::EGUIWrapper::Get().IsInitialized()) {
+                        UI::EGUIWrapper::Get().SetScreenSize(fbWidth, fbHeight);
+                    }
+                    
                     bFramebufferResized = false;
                     UE_LOG_INFO(LogCategories::Core, "Framebuffer resized - New size: %dx%d", fbWidth, fbHeight);
                 }
@@ -441,20 +462,20 @@ private:
                 break;
             }
             
-            // ImGui: New frame (must be called before any ImGui calls)
+            // eGUI: New frame (must be called before any UI calls)
             try {
                 if (loopIteration == 1) {
-                    UE_LOG_INFO(LogCategories::Core, "Calling ImGui::NewFrame()...");
+                    UE_LOG_INFO(LogCategories::Core, "Calling EGUIWrapper::NewFrame()...");
                 }
-                UI::ImGuiWrapper::Get().NewFrame();
+                UI::EGUIWrapper::Get().NewFrame();
                 if (loopIteration == 1) {
-                    UE_LOG_INFO(LogCategories::Core, "ImGui::NewFrame() completed");
+                    UE_LOG_INFO(LogCategories::Core, "EGUIWrapper::NewFrame() completed");
                 }
             } catch (const std::exception& e) {
-                UE_LOG_ERROR(LogCategories::Core, "Exception in ImGuiWrapper::NewFrame(): %s", e.what());
+                UE_LOG_ERROR(LogCategories::Core, "Exception in EGUIWrapper::NewFrame(): %s", e.what());
                 break;
             } catch (...) {
-                UE_LOG_FATAL(LogCategories::Core, "Unknown exception in ImGuiWrapper::NewFrame()");
+                UE_LOG_FATAL(LogCategories::Core, "Unknown exception in EGUIWrapper::NewFrame()");
                 break;
             }
             
@@ -484,6 +505,14 @@ private:
                         frameTimer.GetFrameCount(),
                         frameTimer.GetTotalTime()
                     );
+                }
+                
+                // Actualizar StatusBar
+                auto statusBar = std::dynamic_pointer_cast<UI::StatusBar>(UI::UIManager::Get().GetPanel("StatusBar"));
+                if (statusBar) {
+                    statusBar->SetFPS(frameTimer.GetFPS());
+                    statusBar->SetFrameTime(deltaTime * 1000.0f); // Convertir a ms
+                    statusBar->SetStatus("Ready");
                 }
                 if (loopIteration == 1) {
                     UE_LOG_INFO(LogCategories::Core, "UI data updated successfully");
@@ -525,25 +554,13 @@ private:
                 break;
             }
             
-            // ImGui::Render() DEBE llamarse DESPUÉS de todos los widgets pero ANTES del command buffer
-            // Esto prepara los datos de renderizado para GPU
-            if (UI::ImGuiWrapper::Get().IsInitialized()) {
-                if (loopIteration == 1) {
-                    UE_LOG_INFO(LogCategories::Core, "Calling PrepareRender()...");
-                }
-                try {
-                    UI::ImGuiWrapper::Get().PrepareRender(); // Llama ImGui::Render()
-                    if (loopIteration == 1) {
-                        UE_LOG_INFO(LogCategories::Core, "PrepareRender() completed");
-                    }
-                } catch (const std::exception& e) {
-                    UE_LOG_ERROR(LogCategories::UI, "Exception in PrepareRender(): %s", e.what());
-                    break;
-                } catch (...) {
-                    UE_LOG_ERROR(LogCategories::UI, "Unknown exception in PrepareRender()");
-                    break;
-                }
-            }
+            // Actualizar estado del motor para eGUI
+            UI::EGUIWrapper::Get().UpdateEngineState(
+                frameTimer.GetFPS(),
+                deltaTime,
+                frameTimer.GetFrameCount(),
+                frameTimer.GetTotalTime()
+            );
             
             // Render frame (includes ImGui rendering in command buffer)
             if (loopIteration == 1) {
@@ -585,10 +602,6 @@ private:
                 fflush(stdout);
             }
             
-            // Update textures after frame ends (safe to do transfer operations now)
-            if (UI::ImGuiWrapper::Get().IsInitialized()) {
-                UI::ImGuiWrapper::Get().PostRender();
-            }
             
             // Limit frame rate if enabled
             try {
@@ -625,6 +638,7 @@ private:
     }
 
     void cleanup() {
+        UI::EGUIWrapper::Get().Shutdown();
         UI::UIManager::Get().Shutdown();
         InputManager::Get().Shutdown();
         cube.cleanup();

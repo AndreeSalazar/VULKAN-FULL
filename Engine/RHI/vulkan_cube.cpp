@@ -1,5 +1,5 @@
 #include "vulkan_cube.h"
-#include "../UI/ImGuiWrapper.h"
+#include "../UI/EGUIWrapper.h"
 #include "../Core/Log.h"
 #include <iostream>
 #include <fstream>
@@ -15,7 +15,7 @@
 const bool enableValidationLayers = false;
 #else
 // Intentar usar validation layers, pero continuar sin ellas si no están disponibles
-const bool enableValidationLayers = false; // Cambiar a true solo si tienes validation layers instaladas
+const bool enableValidationLayers = false; // Deshabilitado - no están instaladas
 #endif
 
 const std::vector<const char*> validationLayers = {
@@ -881,15 +881,21 @@ void VulkanCube::createUniformBuffers() {
 }
 
 void VulkanCube::createDescriptorPool() {
-    VkDescriptorPoolSize poolSize{};
-    poolSize.type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
-    poolSize.descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
+    // Crear pool con múltiples tipos de descriptores:
+    // - UNIFORM_BUFFER para el cubo
+    // - COMBINED_IMAGE_SAMPLER para la UI (eGUI)
+    std::array<VkDescriptorPoolSize, 2> poolSizes{};
+    poolSizes[0].type = VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER;
+    poolSizes[0].descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
+    
+    poolSizes[1].type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+    poolSizes[1].descriptorCount = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT) + 10; // Extra para UI
     
     VkDescriptorPoolCreateInfo poolInfo{};
     poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-    poolInfo.poolSizeCount = 1;
-    poolInfo.pPoolSizes = &poolSize;
-    poolInfo.maxSets = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT);
+    poolInfo.poolSizeCount = static_cast<uint32_t>(poolSizes.size());
+    poolInfo.pPoolSizes = poolSizes.data();
+    poolInfo.maxSets = static_cast<uint32_t>(MAX_FRAMES_IN_FLIGHT) + 10; // Extra sets para UI
     
     if (vkCreateDescriptorPool(device, &poolInfo, nullptr, &descriptorPool) != VK_SUCCESS) {
         throw std::runtime_error("failed to create descriptor pool!");
@@ -991,31 +997,37 @@ void VulkanCube::recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t ima
     
     vkCmdDrawIndexed(commandBuffer, static_cast<uint32_t>(indices.size()), 1, 0, 0, 0);
     
-    // Render ImGui (MUST be inside render pass, before vkCmdEndRenderPass)
-    // ImGui_ImplVulkan_RenderDrawData expects to be called within an active render pass
+    // Render eGUI (MUST be inside render pass, before vkCmdEndRenderPass)
     static uint32_t renderCallCount = 0;
     renderCallCount++;
-    if (UI::ImGuiWrapper::Get().IsInitialized()) {
+    if (UI::EGUIWrapper::Get().IsInitialized()) {
         if (renderCallCount == 1) {
-            UE_LOG_INFO(LogCategories::RHI, "[recordCommandBuffer] About to render ImGui (first call)...");
+            UE_LOG_INFO(LogCategories::RHI, "[recordCommandBuffer] About to render eGUI (first call)...");
         }
         try {
-            UI::ImGuiWrapper::Get().Render(commandBuffer);
+            UI::EGUIWrapper::Get().Render(commandBuffer, swapChainExtent.width, swapChainExtent.height);
             if (renderCallCount == 1) {
-                UE_LOG_INFO(LogCategories::RHI, "[recordCommandBuffer] ImGui rendered successfully");
+                UE_LOG_INFO(LogCategories::RHI, "[recordCommandBuffer] eGUI rendered successfully");
             }
         } catch (const std::exception& e) {
-            UE_LOG_FATAL(LogCategories::RHI, "[recordCommandBuffer] Exception rendering ImGui: %s", e.what());
+            UE_LOG_FATAL(LogCategories::RHI, "[recordCommandBuffer] Exception rendering eGUI: %s", e.what());
             throw;
         } catch (...) {
-            UE_LOG_FATAL(LogCategories::RHI, "[recordCommandBuffer] Unknown exception rendering ImGui");
+            UE_LOG_FATAL(LogCategories::RHI, "[recordCommandBuffer] Unknown exception rendering eGUI");
             throw;
         }
     }
     
     vkCmdEndRenderPass(commandBuffer);
     
-    if (vkEndCommandBuffer(commandBuffer) != VK_SUCCESS) {
+    // Verificar el estado del command buffer antes de cerrarlo
+    VkResult endResult = vkEndCommandBuffer(commandBuffer);
+    if (endResult != VK_SUCCESS) {
+        static bool firstError = true;
+        if (firstError) {
+            UE_LOG_FATAL(LogCategories::RHI, "[recordCommandBuffer] vkEndCommandBuffer failed with result %d", endResult);
+            firstError = false;
+        }
         throw std::runtime_error("failed to record command buffer!");
     }
 }
@@ -1094,6 +1106,17 @@ void VulkanCube::drawFrame() {
         
         VkResult submitResult = vkQueueSubmit(graphicsQueue, 1, &submitInfo, inFlightFences[currentFrame]);
         if (submitResult != VK_SUCCESS) {
+            // Log más información sobre el error
+            const char* errorMsg = "Unknown error";
+            switch (submitResult) {
+                case VK_ERROR_OUT_OF_HOST_MEMORY: errorMsg = "VK_ERROR_OUT_OF_HOST_MEMORY"; break;
+                case VK_ERROR_OUT_OF_DEVICE_MEMORY: errorMsg = "VK_ERROR_OUT_OF_DEVICE_MEMORY"; break;
+                case VK_ERROR_DEVICE_LOST: errorMsg = "VK_ERROR_DEVICE_LOST"; break;
+                default: errorMsg = "Unknown VkResult"; break;
+            }
+            UE_LOG_FATAL(LogCategories::RHI, "[drawFrame] vkQueueSubmit failed with result %d (%s)", submitResult, errorMsg);
+            UE_LOG_FATAL(LogCategories::RHI, "[drawFrame] Command buffer: %p, Fence: %p", 
+                         (void*)commandBuffers[currentFrame], (void*)inFlightFences[currentFrame]);
             throw std::runtime_error("failed to submit draw command buffer!");
         }
         if (drawFrameCallCount == 1) {
@@ -1126,6 +1149,12 @@ void VulkanCube::drawFrame() {
         }
         
         currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+        
+        // Actualizar textura de fuente después del frame (fuera del command buffer)
+        // Esto debe hacerse después de que el frame haya terminado completamente
+        if (UI::EGUIWrapper::Get().IsInitialized()) {
+            UI::EGUIWrapper::Get().UpdateFontTextureIfNeeded();
+        }
         
         if (drawFrameCallCount == 1) {
             UE_LOG_INFO(LogCategories::RHI, "[drawFrame] First drawFrame() completed successfully!");

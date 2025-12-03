@@ -13,27 +13,32 @@ find_package(glfw3 REQUIRED)
 
 # Third-party directories (definir PRIMERO antes de usarlos)
 set(THIRDPARTY_ROOT ${CMAKE_SOURCE_DIR}/Engine/ThirdParty)
-set(IMGUI_ROOT ${THIRDPARTY_ROOT}/imgui)
 set(SOL2_ROOT ${THIRDPARTY_ROOT}/sol2)
 
-# ImGui sources - compilar si ImGui está presente
-set(IMGUI_SOURCES "")
-message(STATUS "Buscando ImGui en: ${IMGUI_ROOT}")
-if(EXISTS "${IMGUI_ROOT}/imgui.cpp")
-    file(GLOB IMGUI_SOURCES
-        "${IMGUI_ROOT}/*.cpp"
+# Rust UI (eGUI) - compilar librería Rust
+# Ubicación: Engine/UI/Rust (integrad dentro de UI)
+set(RUST_UI_ROOT ${CMAKE_SOURCE_DIR}/Engine/UI/Rust)
+find_program(CARGO cargo)
+if(CARGO)
+    message(STATUS "✓ Cargo encontrado: ${CARGO}")
+    
+    # Compilar librería Rust
+    # La librería se genera en target/release/libengine_ui.a
+    set(RUST_LIB_PATH "${RUST_UI_ROOT}/target/release/libengine_ui.a")
+    
+    add_custom_command(
+        OUTPUT ${RUST_LIB_PATH}
+        COMMAND ${CARGO} build --release --manifest-path ${RUST_UI_ROOT}/Cargo.toml
+        WORKING_DIRECTORY ${RUST_UI_ROOT}
+        COMMENT "Building Rust UI library (eGUI)"
     )
-    # Asegurar que backends están incluidos
-    if(EXISTS "${IMGUI_ROOT}/backends/imgui_impl_glfw.cpp")
-        list(APPEND IMGUI_SOURCES "${IMGUI_ROOT}/backends/imgui_impl_glfw.cpp")
-    endif()
-    if(EXISTS "${IMGUI_ROOT}/backends/imgui_impl_vulkan.cpp")
-        list(APPEND IMGUI_SOURCES "${IMGUI_ROOT}/backends/imgui_impl_vulkan.cpp")
-    endif()
-    list(LENGTH IMGUI_SOURCES IMGUI_SOURCES_COUNT)
-    message(STATUS "✓ ImGui sources found: ${IMGUI_SOURCES_COUNT} files")
+    
+    add_custom_target(rust_ui_lib DEPENDS ${RUST_LIB_PATH})
+    message(STATUS "✓ Rust UI library target created")
 else()
-    message(WARNING "ImGui sources not found at ${IMGUI_ROOT} - ImGui features will be disabled")
+    message(WARNING "Cargo no encontrado - eGUI features will be disabled")
+    message(WARNING "Instalar Rust: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh")
+    set(RUST_UI_LIB "")
 endif()
 
 # Lua: Usar headers del sistema (ya instalado)
@@ -99,8 +104,6 @@ set(INCLUDE_DIRS
     ${ENGINE_ROOT}/Rendering
     ${ENGINE_ROOT}/Input
     ${ENGINE_ROOT}/Platform
-    ${IMGUI_ROOT}
-    ${IMGUI_ROOT}/backends
     ${LUA_INCLUDE_DIR}  # Headers del sistema (ej: /usr/include/lua5.4)
     ${LUA_ROOT}/src     # Fallback a ThirdParty si existe
     ${SOL2_ROOT}/include
@@ -121,7 +124,8 @@ set(ENGINE_CORE_SOURCES
     ${ENGINE_ROOT}/Core/Threading/ThreadManager.cpp
     ${ENGINE_ROOT}/UI/UIBase.cpp
     ${ENGINE_ROOT}/UI/UIManager.cpp
-    ${ENGINE_ROOT}/UI/ImGuiWrapper.cpp
+    ${ENGINE_ROOT}/UI/EGUIWrapper.cpp
+    ${ENGINE_ROOT}/UI/VulkanRenderer.cpp
     ${ENGINE_ROOT}/UI/Scripting/LuaUI.cpp
         ${ENGINE_ROOT}/UI/Panels/DebugOverlay.cpp
         ${ENGINE_ROOT}/UI/Panels/StatsPanel.cpp
@@ -130,6 +134,8 @@ set(ENGINE_CORE_SOURCES
         ${ENGINE_ROOT}/UI/Panels/DetailsPanel.cpp
         ${ENGINE_ROOT}/UI/Panels/ContentBrowserPanel.cpp
         ${ENGINE_ROOT}/UI/Panels/ConsolePanel.cpp
+        ${ENGINE_ROOT}/UI/Panels/MenuBar.cpp
+        ${ENGINE_ROOT}/UI/Panels/StatusBar.cpp
     ${ENGINE_ROOT}/Rendering/Camera.cpp
 )
 
@@ -180,12 +186,19 @@ set(ALL_SOURCES
     ${RHI_SOURCES}
     ${INPUT_SOURCES}
     ${APP_SOURCES}
-    ${IMGUI_SOURCES}
     ${LUA_SOURCES}
 )
 
 # Create executable
 add_executable(${PROJECT_NAME} ${ALL_SOURCES})
+
+# Dependencia en librería Rust (OPCIONAL - permite compilar sin Rust)
+if(CARGO)
+    add_dependencies(${PROJECT_NAME} rust_ui_lib)
+    message(STATUS "✓ Rust dependency configured")
+else()
+    message(STATUS "⚠ Rust/Cargo not found - UI will be minimal (panels are stubs)")
+endif()
 
 # Set include directories for main executable
 target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
@@ -203,6 +216,20 @@ target_link_libraries(${PROJECT_NAME}
         X11
         stdc++fs  # Para std::experimental::filesystem
     )
+
+# Linkear librería Rust si existe
+if(CARGO)
+    set(RUST_LIB_PATH "${RUST_UI_ROOT}/target/release/libengine_ui.a")
+    # Si la librería ya existe o se va a construir, linkearla
+    if(EXISTS ${RUST_LIB_PATH} OR TARGET rust_ui_lib)
+        target_link_libraries(${PROJECT_NAME} PRIVATE ${RUST_LIB_PATH})
+        message(STATUS "✓ Rust UI library will be linked: ${RUST_LIB_PATH}")
+    else()
+        message(WARNING "Rust library not found, will be built during compilation")
+        # Linkear de todos modos (se construirá durante el build)
+        target_link_libraries(${PROJECT_NAME} PRIVATE ${RUST_LIB_PATH})
+    endif()
+endif()
 
 # Linkear Lua si se encontró la biblioteca del sistema
 if(LUA_LIBRARY)

@@ -1,0 +1,22 @@
+-- ✓ Cargo encontrado: /home/andre/.cargo/bin/cargo
+-- ✓ Rust UI library target created
+-- ✓ Lua encontrado en: /usr/include/lua5.4
+-- ✓ Biblioteca Lua encontrada: /usr/lib/x86_64-linux-gnu/liblua5.4.so
+-- ✓ Rust dependency configured
+-- ✓ Rust UI library will be linked: /home/andre/Documentos/VULKAN FULL/Engine/UI/Rust/target/release/libengine_ui.a
+-- ✓ Lua linkeado: /usr/lib/x86_64-linux-gnu/liblua5.4.so
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/andre/Documentos/VULKAN FULL/build
+[  3%] Built target rust_ui_lib
+Consolidate compiler generated dependencies of target VulkanCube
+[ 19%] Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DetailsPanel.cpp.o
+[ 19%] Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ContentBrowserPanel.cpp.o
+[ 19%] Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/EGUIWrapper.cpp.o
+[ 19%] Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/VulkanRenderer.cpp.o
+[ 19%] Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ObjectHierarchyPanel.cpp.o
+[ 22%] Building CXX object CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o
+[ 25%] Building CXX object CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ConsolePanel.cpp.o
+[ 29%] Building CXX object CMakeFiles/VulkanCube.dir/Source/main.cpp.o
+[ 32%] Linking CXX executable VulkanCube
+[100%] Built target VulkanCube

@@ -24,10 +24,16 @@ public:
     // Selección
     void SetSelectedObject(class UObject* obj) { selectedObject = obj; }
     class UObject* GetSelectedObject() const { return selectedObject; }
+    
+    // Callback cuando se selecciona un objeto
+    void SetOnObjectSelected(std::function<void(class UObject*)> callback) {
+        onObjectSelected = callback;
+    }
 
 private:
     std::vector<class UObject*> objectList;
     class UObject* selectedObject = nullptr;
+    std::function<void(class UObject*)> onObjectSelected;
 };
 
 } // namespace UI

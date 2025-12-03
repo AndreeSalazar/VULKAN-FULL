@@ -169,22 +169,6 @@ CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DetailsPanel.cpp.o: \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
  /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/../../Core/Object/UObject.h \
- /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/../ImGuiWrapper.h \
- /usr/include/GLFW/glfw3.h /usr/include/vulkan/vulkan.h \
- /usr/include/vulkan/vk_platform.h /usr/include/vulkan/vulkan_core.h \
- /usr/include/vk_video/vulkan_video_codec_h264std.h \
- /usr/include/vk_video/vulkan_video_codecs_common.h \
- /usr/include/vk_video/vulkan_video_codec_h264std_encode.h \
- /usr/include/vk_video/vulkan_video_codec_h264std.h \
- /usr/include/vk_video/vulkan_video_codec_h265std.h \
- /usr/include/vk_video/vulkan_video_codec_h265std_encode.h \
- /usr/include/vk_video/vulkan_video_codec_h265std.h \
- /usr/include/vk_video/vulkan_video_codec_h264std_decode.h \
- /usr/include/vk_video/vulkan_video_codec_h265std_decode.h \
- /usr/include/vk_video/vulkan_video_codec_av1std.h \
- /usr/include/vk_video/vulkan_video_codec_av1std_decode.h \
- /usr/include/vk_video/vulkan_video_codec_av1std.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
  /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/../../Core/Log.h \
  /usr/include/c++/11/sstream /usr/include/c++/11/istream \
  /usr/include/c++/11/ios /usr/include/c++/11/bits/ios_base.h \
@@ -220,8 +204,4 @@ CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DetailsPanel.cpp.o: \
  /usr/include/c++/11/bits/quoted_string.h /usr/include/c++/11/mutex \
  /usr/include/c++/11/bits/std_mutex.h \
  /usr/include/c++/11/bits/unique_lock.h \
- /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/../../Core/Object/UClass.h \
- /home/andre/Documentos/VULKAN\ FULL/Engine/ThirdParty/imgui/imgui.h \
- /home/andre/Documentos/VULKAN\ FULL/Engine/ThirdParty/imgui/imconfig.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h /usr/include/string.h \
- /usr/include/strings.h /usr/include/assert.h
+ /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/../../Core/Object/UClass.h

@@ -5,8 +5,7 @@
 #include <vector>
 #include <deque>
 
-// Forward declaration - ImVec4 viene de imgui.h
-struct ImVec4;
+// Forward declarations
 
 namespace UI {
 

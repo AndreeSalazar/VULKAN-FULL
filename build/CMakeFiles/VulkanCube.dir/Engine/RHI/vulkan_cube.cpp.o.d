@@ -192,7 +192,7 @@ CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o: \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/optional \
  /usr/include/c++/11/bits/enable_special_members.h \
  /usr/include/c++/11/cstddef \
- /home/andre/Documentos/VULKAN\ FULL/Engine/RHI/../UI/ImGuiWrapper.h \
+ /home/andre/Documentos/VULKAN\ FULL/Engine/RHI/../UI/EGUIWrapper.h \
  /usr/include/c++/11/memory /usr/include/c++/11/bits/stl_tempbuf.h \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
  /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
@@ -207,8 +207,11 @@ CMakeFiles/VulkanCube.dir/Engine/RHI/vulkan_cube.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/algorithm \
- /usr/include/c++/11/bits/stl_algo.h \
+ /usr/include/c++/11/pstl/execution_defs.h \
+ /home/andre/Documentos/VULKAN\ FULL/Engine/RHI/../UI/engine_ui_ffi.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
+ /home/andre/Documentos/VULKAN\ FULL/Engine/RHI/../UI/VulkanRenderer.h \
+ /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
  /usr/include/c++/11/bits/uniform_int_dist.h \

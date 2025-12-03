@@ -1,3 +1,4 @@
+/home/andre/Documentos/VULKAN FULL/build/CMakeFiles/rust_ui_lib.dir
 /home/andre/Documentos/VULKAN FULL/build/CMakeFiles/VulkanCube.dir
 /home/andre/Documentos/VULKAN FULL/build/CMakeFiles/edit_cache.dir
 /home/andre/Documentos/VULKAN FULL/build/CMakeFiles/rebuild_cache.dir

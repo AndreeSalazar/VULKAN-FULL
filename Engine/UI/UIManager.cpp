@@ -1,8 +1,5 @@
 #include "UIManager.h"
-#include "ImGuiWrapper.h"
 #include "../Core/Log.h"
-#include "../ThirdParty/imgui/imgui.h"
-#include "imgui.h"
 
 namespace UI {
 
@@ -65,20 +62,23 @@ void UIManager::Update(float deltaTime) {
 void UIManager::Render() {
     if (!bInitialized) return;
     
-    // Asegurar que el contexto de ImGui esté establecido ANTES de renderizar cualquier panel
-    if (UI::ImGuiWrapper::Get().IsInitialized()) {
-        ImGui::SetCurrentContext(UI::ImGuiWrapper::Get().GetContext());
+    // TODO: Implementar renderizado con eGUI (Rust)
+    // Por ahora solo renderizamos paneles si eGUI está inicializado
+    
+    // Render MenuBar FIRST (must be before any windows)
+    auto menuBar = GetPanel("MenuBar");
+    if (menuBar && menuBar->IsVisible()) {
+        menuBar->Render();
     }
     
     // Render all windows (paneles estilo UE5)
-    // Con docking habilitado, ImGui manejará el layout automáticamente
     for (auto& [name, window] : windows) {
         if (window && window->IsVisible()) {
             window->Render();
         }
     }
     
-    // Render debug overlay last (on top, siempre visible)
+    // Render debug overlay (on top, siempre visible)
     if (bShowDebugOverlay) {
         auto overlay = GetPanel("DebugOverlay");
         if (overlay) {
@@ -86,30 +86,10 @@ void UIManager::Render() {
         }
     }
     
-    // Fallback sin docking (si ImGui no está disponible)
-    if (false) {
-        // Fallback: render sin docking
-        // Render debug overlay first (if enabled)
-        if (bShowDebugOverlay) {
-            auto overlay = GetPanel("DebugOverlay");
-            if (overlay) {
-                overlay->Render();
-            }
-        }
-        
-        // Render all panels
-        for (auto& [name, panel] : panels) {
-            if (panel && panel->IsVisible() && name != "DebugOverlay") {
-                panel->Render();
-            }
-        }
-        
-        // Render all windows
-        for (auto& [name, window] : windows) {
-            if (window && window->IsVisible()) {
-                window->Render();
-            }
-        }
+    // Render StatusBar LAST (must be after all windows)
+    auto statusBar = GetPanel("StatusBar");
+    if (statusBar && statusBar->IsVisible()) {
+        statusBar->Render();
     }
 }
 

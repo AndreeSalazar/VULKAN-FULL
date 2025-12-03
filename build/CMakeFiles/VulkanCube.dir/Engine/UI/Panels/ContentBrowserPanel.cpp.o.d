@@ -201,32 +201,11 @@ CMakeFiles/VulkanCube.dir/Engine/UI/Panels/ContentBrowserPanel.cpp.o: \
  /usr/include/c++/11/bits/sstream.tcc \
  /usr/include/c++/11/experimental/bits/fs_dir.h \
  /usr/include/c++/11/experimental/bits/fs_ops.h \
- /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/../ImGuiWrapper.h \
- /usr/include/GLFW/glfw3.h /usr/include/vulkan/vulkan.h \
- /usr/include/vulkan/vk_platform.h /usr/include/vulkan/vulkan_core.h \
- /usr/include/vk_video/vulkan_video_codec_h264std.h \
- /usr/include/vk_video/vulkan_video_codecs_common.h \
- /usr/include/vk_video/vulkan_video_codec_h264std_encode.h \
- /usr/include/vk_video/vulkan_video_codec_h264std.h \
- /usr/include/vk_video/vulkan_video_codec_h265std.h \
- /usr/include/vk_video/vulkan_video_codec_h265std_encode.h \
- /usr/include/vk_video/vulkan_video_codec_h265std.h \
- /usr/include/vk_video/vulkan_video_codec_h264std_decode.h \
- /usr/include/vk_video/vulkan_video_codec_h265std_decode.h \
- /usr/include/vk_video/vulkan_video_codec_av1std.h \
- /usr/include/vk_video/vulkan_video_codec_av1std_decode.h \
- /usr/include/vk_video/vulkan_video_codec_av1std.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
  /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/../../Core/Log.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/fstream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /usr/include/c++/11/iomanip \
  /usr/include/c++/11/mutex /usr/include/c++/11/bits/std_mutex.h \
- /usr/include/c++/11/bits/unique_lock.h \
- /home/andre/Documentos/VULKAN\ FULL/Engine/ThirdParty/imgui/imgui.h \
- /home/andre/Documentos/VULKAN\ FULL/Engine/ThirdParty/imgui/imconfig.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h /usr/include/string.h \
- /usr/include/strings.h /usr/include/assert.h \
- /usr/include/c++/11/algorithm \
+ /usr/include/c++/11/bits/unique_lock.h /usr/include/c++/11/algorithm \
  /usr/include/c++/11/pstl/glue_algorithm_defs.h

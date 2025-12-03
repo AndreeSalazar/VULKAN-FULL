@@ -1,188 +1,146 @@
-# UI System - Sistema de Interfaz Gráfica
+# UI System - Sistema de Interfaz Gráfica Unificado
 
 ## 📋 Descripción
 
-Sistema de interfaz gráfica base para el motor, diseñado para facilitar la visualización y gestión del motor de forma visual e intuitiva.
+Sistema de interfaz gráfica unificado para el motor Vulkan, combinando:
+- **C++ Backend**: Wrappers, managers y lógica del motor
+- **Rust Frontend**: eGUI para renderizado moderno de UI
 
-## 🎯 Propósito
+## 🏗️ Estructura Unificada
 
-El sistema UI permite:
-- **Visualización**: Ver información del motor (FPS, stats, objetos)
-- **Gestión**: Interactuar con objetos y sistemas del motor
-- **Debug**: Panel de debug overlay para desarrollo
-- **Extensibilidad**: Fácil agregar nuevos paneles y widgets
+```
+Engine/UI/
+├── Rust/                    # Frontend UI en Rust + eGUI
+│   ├── Cargo.toml
+│   ├── src/lib.rs          # Funciones FFI para eGUI
+│   └── cbindgen.toml
+│
+├── Panels/                  # Paneles UI (C++ - lógica)
+│   ├── MenuBar
+│   ├── StatusBar
+│   ├── StatsPanel
+│   ├── ViewportPanel
+│   ├── DetailsPanel
+│   ├── ContentBrowserPanel
+│   ├── ConsolePanel
+│   ├── ObjectHierarchyPanel
+│   └── DebugOverlay
+│
+├── Scripting/               # Scripting UI (Lua)
+│   └── LuaUI
+│
+├── EGUIWrapper.h/cpp       # Bridge C++ ↔ Rust (FFI)
+├── UIManager.h/cpp         # Gestor central de UI
+├── UIBase.h/cpp            # Clases base (IPanel, IWindow, etc.)
+└── README.md               # Este archivo
+```
 
-## 🔧 Componentes
+## 🎯 Arquitectura
 
-### 1. UIBase (`UIBase.h/cpp`)
-Sistema base para widgets, paneles y ventanas:
-- `IWidget`: Clase base para todos los widgets
-- `IPanel`: Panel que puede contener widgets
-- `IWindow`: Ventana con título y contenido
-- `FRect`: Rectángulo para layout
-- `FColor`: Color RGBA
-- `EWidgetState`: Estados de widgets (Normal, Hovered, Pressed, Disabled)
+```
+┌─────────────────────────────────────────┐
+│         C++ Engine Core                 │
+│  (Rendering, Game Logic, Systems)       │
+└──────────────┬──────────────────────────┘
+               │
+┌──────────────▼──────────────────────────┐
+│      UI Manager (C++)                   │
+│  - UIManager                            │
+│  - Panels (lógica C++)                  │
+└──────────────┬──────────────────────────┘
+               │ FFI Bridge
+┌──────────────▼──────────────────────────┐
+│      eGUI Frontend (Rust)               │
+│  - Engine/UI/Rust/src/lib.rs            │
+│  - Renderizado con eGUI                 │
+└──────────────┬──────────────────────────┘
+               │
+┌──────────────▼──────────────────────────┐
+│      Vulkan Renderer (C++)              │
+│  - Comandos de renderizado              │
+└─────────────────────────────────────────┘
+```
 
-### 2. UIManager (`UIManager.h/cpp`)
-Gestor principal de la interfaz:
-- Singleton para acceso global
-- Registro y gestión de paneles/ventanas
-- Control de visibilidad
-- Update y Render centralizados
+## 🔧 Componentes Principales
 
-**Uso**:
+### 1. **EGUIWrapper** (`EGUIWrapper.h/cpp`)
+Bridge C++ ↔ Rust que expone funciones FFI para comunicación entre ambos lenguajes.
+
 ```cpp
-// Inicializar
-UI::UIManager::Get().Initialize();
+// Inicializar eGUI desde C++
+UI::EGUIWrapper::Get().Initialize(window, instance, ...);
 
+// Renderizar frame
+UI::EGUIWrapper::Get().Render(commandBuffer);
+```
+
+### 2. **UIManager** (`UIManager.h/cpp`)
+Gestor central que coordina todos los paneles y ventanas.
+
+```cpp
 // Registrar panel
-auto panel = std::make_shared<UI::MyPanel>();
-UI::UIManager::Get().RegisterPanel("MyPanel", panel);
+UI::UIManager::Get().RegisterPanel("Stats", statsPanel);
 
-// Mostrar/Ocultar
-UI::UIManager::Get().ShowPanel("MyPanel");
-UI::UIManager::Get().HidePanel("MyPanel");
-UI::UIManager::Get().TogglePanel("MyPanel");
-
-// En main loop
-UI::UIManager::Get().Update(deltaTime);
+// Renderizar
 UI::UIManager::Get().Render();
 ```
 
-### 3. Paneles Incluidos
+### 3. **Paneles** (`Panels/`)
+Cada panel contiene la lógica C++ y llama a eGUI (Rust) para renderizado.
 
-#### DebugOverlay
-Overlay de debug (siempre visible, opcionalmente):
-- FPS actual
-- Delta time
-- Frame count
-- Total time
-- Posición de cámara
-- Tamaño de Render Queue
+### 4. **Rust Frontend** (`Rust/`)
+Implementación de eGUI en Rust que expone funciones FFI.
 
-#### StatsPanel
-Panel de estadísticas detalladas:
-- FPS
-- Delta time
-- Frame count
-- Total time
+## 🚀 Uso
 
-#### ObjectHierarchyPanel
-Panel para mostrar jerarquía de objetos UObject:
-- Lista de objetos
-- Selección de objetos
-- Información de objetos seleccionados
-
-## 🚀 Crear un Nuevo Panel
-
+### Inicialización
 ```cpp
-// MyCustomPanel.h
-#pragma once
-#include "UIBase.h"
-
-namespace UI {
-    class MyCustomPanel : public IPanel {
-    public:
-        MyCustomPanel();
-        virtual ~MyCustomPanel() = default;
-        
-        virtual void Render() override;
-        virtual void Update(float deltaTime) override;
-        
-        // Métodos personalizados
-        void SetData(const std::string& data);
-        
-    private:
-        std::string myData;
-    };
-}
-
-// MyCustomPanel.cpp
-#include "MyCustomPanel.h"
-#include "../../Core/Log.h"
-
-namespace UI {
-    MyCustomPanel::MyCustomPanel() {
-        SetBounds(FRect(10, 10, 400, 300));
-        SetVisible(false);
-    }
-    
-    void MyCustomPanel::Render() {
-        if (!IsVisible()) return;
-        
-        // Renderizar panel (por ahora, logging básico)
-        UE_LOG_INFO(LogCategories::Core, "MyCustomPanel: %s", myData.c_str());
-    }
-    
-    void MyCustomPanel::Update(float deltaTime) {
-        // Actualizar lógica
-    }
-    
-    void MyCustomPanel::SetData(const std::string& data) {
-        myData = data;
-    }
-}
-```
-
-## 📝 Integración en main.cpp
-
-```cpp
-#include "UI/UIManager.h"
-#include "UI/Panels/DebugOverlay.h"
-
-// En initVulkan() o mainLoop()
+// En main.cpp
+UI::EGUIWrapper::Get().Initialize(...);
 UI::UIManager::Get().Initialize();
-UI::UIManager::Get().RegisterPanel("DebugOverlay", 
-                                   std::make_shared<UI::DebugOverlay>());
 
-// En mainLoop()
+// Registrar paneles
+UI::UIManager::Get().RegisterPanel("MenuBar", menuBar);
+UI::UIManager::Get().RegisterWindow("Viewport", viewport);
+```
+
+### Loop Principal
+```cpp
+// Cada frame
+UI::EGUIWrapper::Get().NewFrame();
+UI::EGUIWrapper::Get().UpdateEngineState(fps, deltaTime, ...);
 UI::UIManager::Get().Update(deltaTime);
 UI::UIManager::Get().Render();
-
-// En cleanup()
-UI::UIManager::Get().Shutdown();
+UI::EGUIWrapper::Get().Render(commandBuffer);
 ```
 
-## 🎨 Renderizado Actual
+## 📝 Paneles Disponibles
 
-**Nota**: El sistema actual usa logging básico para mostrar información. En el futuro, esto se integrará con un renderer de UI real como:
-- **Dear ImGui**: Popular para overlays de debug
-- **Nuklear**: Ligero y header-only
-- **Custom Vulkan Renderer**: Renderer personalizado con Vulkan
+- **MenuBar**: Barra de menús principal
+- **StatusBar**: Barra de estado inferior
+- **StatsPanel**: Estadísticas de rendimiento
+- **ViewportPanel**: Vista 3D principal
+- **DetailsPanel**: Propiedades de objetos
+- **ContentBrowserPanel**: Explorador de assets
+- **ConsolePanel**: Consola de comandos y logs
+- **ObjectHierarchyPanel**: Jerarquía de objetos
+- **DebugOverlay**: Overlay de debug
 
-## 🔮 Futuras Mejoras
+## 🔄 Estado Actual
 
-- [ ] Integrar Dear ImGui para renderizado visual real
-- [ ] Property Inspector panel (editar propiedades de UObject)
-- [ ] Console panel (comandos del motor)
-- [ ] Asset Browser panel
-- [ ] Scene Outliner mejorado
-- [ ] Toolbar y menús
-- [ ] Temas y estilos personalizables
-- [ ] Drag & Drop support
-- [ ] Layout persistence (guardar posiciones de ventanas)
+✅ **Completado:**
+- Estructura unificada (C++ + Rust)
+- Bridge FFI implementado
+- Paneles creados (stubs por ahora)
+- Integración con CMake
 
-## ⌨️ Controles
+⏳ **Pendiente:**
+- Implementar renderizado real con eGUI en Rust
+- Migrar paneles de stubs a implementación completa
+- Estilo UE5 completo
 
-- **TAB**: Toggle UI visibility (mostrar/ocultar paneles)
-- **ESC**: Lock/Unlock mouse (cuando UI está visible)
+## 📚 Recursos
 
-## 📚 Arquitectura
-
-```
-UIManager (Singleton)
-├── Panels (unordered_map)
-│   ├── DebugOverlay
-│   └── Custom Panels...
-└── Windows (unordered_map)
-    ├── StatsPanel
-    ├── ObjectHierarchyPanel
-    └── Custom Windows...
-```
-
-Cada panel/ventana:
-- Puede contener widgets
-- Tiene su propio Update() y Render()
-- Controla su propia visibilidad
-- Puede tener estados (hovered, pressed, etc.)
-
+- [eGUI Documentation](https://www.egui.rs/)
+- [Rust FFI Guide](https://doc.rust-lang.org/nomicon/ffi.html)
+- Ver `EGUI_INTEGRATION_PLAN.md` para detalles técnicos

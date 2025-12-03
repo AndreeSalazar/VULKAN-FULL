@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named rust_ui_lib
+
+# Build rule for target.
+rust_ui_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 rust_ui_lib
+.PHONY : rust_ui_lib
+
+# fast build rule for target.
+rust_ui_lib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/rust_ui_lib.dir/build.make CMakeFiles/rust_ui_lib.dir/build
+.PHONY : rust_ui_lib/fast
+
+#=============================================================================
 # Target rules for targets named VulkanCube
 
 # Build rule for target.
@@ -465,197 +478,29 @@ Engine/Rendering/Camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/Rendering/Camera.cpp.s
 .PHONY : Engine/Rendering/Camera.cpp.s
 
-Engine/ThirdParty/imgui/backends/imgui_impl_glfw.o: Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.o
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.o
+Engine/UI/EGUIWrapper.o: Engine/UI/EGUIWrapper.cpp.o
+.PHONY : Engine/UI/EGUIWrapper.o
 
 # target to build an object file
-Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.o
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.o
+Engine/UI/EGUIWrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/EGUIWrapper.cpp.o
+.PHONY : Engine/UI/EGUIWrapper.cpp.o
 
-Engine/ThirdParty/imgui/backends/imgui_impl_glfw.i: Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.i
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.i
-
-# target to preprocess a source file
-Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.i
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.i
-
-Engine/ThirdParty/imgui/backends/imgui_impl_glfw.s: Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.s
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.s
-
-# target to generate assembly for a file
-Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.s
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_glfw.cpp.s
-
-Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.o: Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.o
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.o
-
-# target to build an object file
-Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.o
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.o
-
-Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.i: Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.i
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.i
+Engine/UI/EGUIWrapper.i: Engine/UI/EGUIWrapper.cpp.i
+.PHONY : Engine/UI/EGUIWrapper.i
 
 # target to preprocess a source file
-Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.i
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.i
+Engine/UI/EGUIWrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/EGUIWrapper.cpp.i
+.PHONY : Engine/UI/EGUIWrapper.cpp.i
 
-Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.s: Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.s
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.s
-
-# target to generate assembly for a file
-Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.s
-.PHONY : Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.cpp.s
-
-Engine/ThirdParty/imgui/imgui.o: Engine/ThirdParty/imgui/imgui.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui.o
-
-# target to build an object file
-Engine/ThirdParty/imgui/imgui.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui.cpp.o
-
-Engine/ThirdParty/imgui/imgui.i: Engine/ThirdParty/imgui/imgui.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui.i
-
-# target to preprocess a source file
-Engine/ThirdParty/imgui/imgui.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui.cpp.i
-
-Engine/ThirdParty/imgui/imgui.s: Engine/ThirdParty/imgui/imgui.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui.s
+Engine/UI/EGUIWrapper.s: Engine/UI/EGUIWrapper.cpp.s
+.PHONY : Engine/UI/EGUIWrapper.s
 
 # target to generate assembly for a file
-Engine/ThirdParty/imgui/imgui.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui.cpp.s
-
-Engine/ThirdParty/imgui/imgui_demo.o: Engine/ThirdParty/imgui/imgui_demo.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui_demo.o
-
-# target to build an object file
-Engine/ThirdParty/imgui/imgui_demo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_demo.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui_demo.cpp.o
-
-Engine/ThirdParty/imgui/imgui_demo.i: Engine/ThirdParty/imgui/imgui_demo.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui_demo.i
-
-# target to preprocess a source file
-Engine/ThirdParty/imgui/imgui_demo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_demo.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui_demo.cpp.i
-
-Engine/ThirdParty/imgui/imgui_demo.s: Engine/ThirdParty/imgui/imgui_demo.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui_demo.s
-
-# target to generate assembly for a file
-Engine/ThirdParty/imgui/imgui_demo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_demo.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui_demo.cpp.s
-
-Engine/ThirdParty/imgui/imgui_draw.o: Engine/ThirdParty/imgui/imgui_draw.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui_draw.o
-
-# target to build an object file
-Engine/ThirdParty/imgui/imgui_draw.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_draw.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui_draw.cpp.o
-
-Engine/ThirdParty/imgui/imgui_draw.i: Engine/ThirdParty/imgui/imgui_draw.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui_draw.i
-
-# target to preprocess a source file
-Engine/ThirdParty/imgui/imgui_draw.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_draw.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui_draw.cpp.i
-
-Engine/ThirdParty/imgui/imgui_draw.s: Engine/ThirdParty/imgui/imgui_draw.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui_draw.s
-
-# target to generate assembly for a file
-Engine/ThirdParty/imgui/imgui_draw.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_draw.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui_draw.cpp.s
-
-Engine/ThirdParty/imgui/imgui_tables.o: Engine/ThirdParty/imgui/imgui_tables.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui_tables.o
-
-# target to build an object file
-Engine/ThirdParty/imgui/imgui_tables.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_tables.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui_tables.cpp.o
-
-Engine/ThirdParty/imgui/imgui_tables.i: Engine/ThirdParty/imgui/imgui_tables.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui_tables.i
-
-# target to preprocess a source file
-Engine/ThirdParty/imgui/imgui_tables.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_tables.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui_tables.cpp.i
-
-Engine/ThirdParty/imgui/imgui_tables.s: Engine/ThirdParty/imgui/imgui_tables.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui_tables.s
-
-# target to generate assembly for a file
-Engine/ThirdParty/imgui/imgui_tables.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_tables.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui_tables.cpp.s
-
-Engine/ThirdParty/imgui/imgui_widgets.o: Engine/ThirdParty/imgui/imgui_widgets.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui_widgets.o
-
-# target to build an object file
-Engine/ThirdParty/imgui/imgui_widgets.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_widgets.cpp.o
-.PHONY : Engine/ThirdParty/imgui/imgui_widgets.cpp.o
-
-Engine/ThirdParty/imgui/imgui_widgets.i: Engine/ThirdParty/imgui/imgui_widgets.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui_widgets.i
-
-# target to preprocess a source file
-Engine/ThirdParty/imgui/imgui_widgets.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_widgets.cpp.i
-.PHONY : Engine/ThirdParty/imgui/imgui_widgets.cpp.i
-
-Engine/ThirdParty/imgui/imgui_widgets.s: Engine/ThirdParty/imgui/imgui_widgets.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui_widgets.s
-
-# target to generate assembly for a file
-Engine/ThirdParty/imgui/imgui_widgets.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/ThirdParty/imgui/imgui_widgets.cpp.s
-.PHONY : Engine/ThirdParty/imgui/imgui_widgets.cpp.s
-
-Engine/UI/ImGuiWrapper.o: Engine/UI/ImGuiWrapper.cpp.o
-.PHONY : Engine/UI/ImGuiWrapper.o
-
-# target to build an object file
-Engine/UI/ImGuiWrapper.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/ImGuiWrapper.cpp.o
-.PHONY : Engine/UI/ImGuiWrapper.cpp.o
-
-Engine/UI/ImGuiWrapper.i: Engine/UI/ImGuiWrapper.cpp.i
-.PHONY : Engine/UI/ImGuiWrapper.i
-
-# target to preprocess a source file
-Engine/UI/ImGuiWrapper.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/ImGuiWrapper.cpp.i
-.PHONY : Engine/UI/ImGuiWrapper.cpp.i
-
-Engine/UI/ImGuiWrapper.s: Engine/UI/ImGuiWrapper.cpp.s
-.PHONY : Engine/UI/ImGuiWrapper.s
-
-# target to generate assembly for a file
-Engine/UI/ImGuiWrapper.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/ImGuiWrapper.cpp.s
-.PHONY : Engine/UI/ImGuiWrapper.cpp.s
+Engine/UI/EGUIWrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/EGUIWrapper.cpp.s
+.PHONY : Engine/UI/EGUIWrapper.cpp.s
 
 Engine/UI/Panels/ConsolePanel.o: Engine/UI/Panels/ConsolePanel.cpp.o
 .PHONY : Engine/UI/Panels/ConsolePanel.o
@@ -753,6 +598,30 @@ Engine/UI/Panels/DetailsPanel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/DetailsPanel.cpp.s
 .PHONY : Engine/UI/Panels/DetailsPanel.cpp.s
 
+Engine/UI/Panels/MenuBar.o: Engine/UI/Panels/MenuBar.cpp.o
+.PHONY : Engine/UI/Panels/MenuBar.o
+
+# target to build an object file
+Engine/UI/Panels/MenuBar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/MenuBar.cpp.o
+.PHONY : Engine/UI/Panels/MenuBar.cpp.o
+
+Engine/UI/Panels/MenuBar.i: Engine/UI/Panels/MenuBar.cpp.i
+.PHONY : Engine/UI/Panels/MenuBar.i
+
+# target to preprocess a source file
+Engine/UI/Panels/MenuBar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/MenuBar.cpp.i
+.PHONY : Engine/UI/Panels/MenuBar.cpp.i
+
+Engine/UI/Panels/MenuBar.s: Engine/UI/Panels/MenuBar.cpp.s
+.PHONY : Engine/UI/Panels/MenuBar.s
+
+# target to generate assembly for a file
+Engine/UI/Panels/MenuBar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/MenuBar.cpp.s
+.PHONY : Engine/UI/Panels/MenuBar.cpp.s
+
 Engine/UI/Panels/ObjectHierarchyPanel.o: Engine/UI/Panels/ObjectHierarchyPanel.cpp.o
 .PHONY : Engine/UI/Panels/ObjectHierarchyPanel.o
 
@@ -800,6 +669,30 @@ Engine/UI/Panels/StatsPanel.s: Engine/UI/Panels/StatsPanel.cpp.s
 Engine/UI/Panels/StatsPanel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatsPanel.cpp.s
 .PHONY : Engine/UI/Panels/StatsPanel.cpp.s
+
+Engine/UI/Panels/StatusBar.o: Engine/UI/Panels/StatusBar.cpp.o
+.PHONY : Engine/UI/Panels/StatusBar.o
+
+# target to build an object file
+Engine/UI/Panels/StatusBar.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatusBar.cpp.o
+.PHONY : Engine/UI/Panels/StatusBar.cpp.o
+
+Engine/UI/Panels/StatusBar.i: Engine/UI/Panels/StatusBar.cpp.i
+.PHONY : Engine/UI/Panels/StatusBar.i
+
+# target to preprocess a source file
+Engine/UI/Panels/StatusBar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatusBar.cpp.i
+.PHONY : Engine/UI/Panels/StatusBar.cpp.i
+
+Engine/UI/Panels/StatusBar.s: Engine/UI/Panels/StatusBar.cpp.s
+.PHONY : Engine/UI/Panels/StatusBar.s
+
+# target to generate assembly for a file
+Engine/UI/Panels/StatusBar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/Panels/StatusBar.cpp.s
+.PHONY : Engine/UI/Panels/StatusBar.cpp.s
 
 Engine/UI/Panels/ViewportPanel.o: Engine/UI/Panels/ViewportPanel.cpp.o
 .PHONY : Engine/UI/Panels/ViewportPanel.o
@@ -897,6 +790,30 @@ Engine/UI/UIManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/UIManager.cpp.s
 .PHONY : Engine/UI/UIManager.cpp.s
 
+Engine/UI/VulkanRenderer.o: Engine/UI/VulkanRenderer.cpp.o
+.PHONY : Engine/UI/VulkanRenderer.o
+
+# target to build an object file
+Engine/UI/VulkanRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/VulkanRenderer.cpp.o
+.PHONY : Engine/UI/VulkanRenderer.cpp.o
+
+Engine/UI/VulkanRenderer.i: Engine/UI/VulkanRenderer.cpp.i
+.PHONY : Engine/UI/VulkanRenderer.i
+
+# target to preprocess a source file
+Engine/UI/VulkanRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/VulkanRenderer.cpp.i
+.PHONY : Engine/UI/VulkanRenderer.cpp.i
+
+Engine/UI/VulkanRenderer.s: Engine/UI/VulkanRenderer.cpp.s
+.PHONY : Engine/UI/VulkanRenderer.s
+
+# target to generate assembly for a file
+Engine/UI/VulkanRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VulkanCube.dir/build.make CMakeFiles/VulkanCube.dir/Engine/UI/VulkanRenderer.cpp.s
+.PHONY : Engine/UI/VulkanRenderer.cpp.s
+
 Source/main.o: Source/main.cpp.o
 .PHONY : Source/main.o
 
@@ -929,6 +846,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... rust_ui_lib"
 	@echo "... VulkanCube"
 	@echo "... Engine/Core/Log.o"
 	@echo "... Engine/Core/Log.i"
@@ -972,30 +890,9 @@ help:
 	@echo "... Engine/Rendering/Camera.o"
 	@echo "... Engine/Rendering/Camera.i"
 	@echo "... Engine/Rendering/Camera.s"
-	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_glfw.o"
-	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_glfw.i"
-	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_glfw.s"
-	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.o"
-	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.i"
-	@echo "... Engine/ThirdParty/imgui/backends/imgui_impl_vulkan.s"
-	@echo "... Engine/ThirdParty/imgui/imgui.o"
-	@echo "... Engine/ThirdParty/imgui/imgui.i"
-	@echo "... Engine/ThirdParty/imgui/imgui.s"
-	@echo "... Engine/ThirdParty/imgui/imgui_demo.o"
-	@echo "... Engine/ThirdParty/imgui/imgui_demo.i"
-	@echo "... Engine/ThirdParty/imgui/imgui_demo.s"
-	@echo "... Engine/ThirdParty/imgui/imgui_draw.o"
-	@echo "... Engine/ThirdParty/imgui/imgui_draw.i"
-	@echo "... Engine/ThirdParty/imgui/imgui_draw.s"
-	@echo "... Engine/ThirdParty/imgui/imgui_tables.o"
-	@echo "... Engine/ThirdParty/imgui/imgui_tables.i"
-	@echo "... Engine/ThirdParty/imgui/imgui_tables.s"
-	@echo "... Engine/ThirdParty/imgui/imgui_widgets.o"
-	@echo "... Engine/ThirdParty/imgui/imgui_widgets.i"
-	@echo "... Engine/ThirdParty/imgui/imgui_widgets.s"
-	@echo "... Engine/UI/ImGuiWrapper.o"
-	@echo "... Engine/UI/ImGuiWrapper.i"
-	@echo "... Engine/UI/ImGuiWrapper.s"
+	@echo "... Engine/UI/EGUIWrapper.o"
+	@echo "... Engine/UI/EGUIWrapper.i"
+	@echo "... Engine/UI/EGUIWrapper.s"
 	@echo "... Engine/UI/Panels/ConsolePanel.o"
 	@echo "... Engine/UI/Panels/ConsolePanel.i"
 	@echo "... Engine/UI/Panels/ConsolePanel.s"
@@ -1008,12 +905,18 @@ help:
 	@echo "... Engine/UI/Panels/DetailsPanel.o"
 	@echo "... Engine/UI/Panels/DetailsPanel.i"
 	@echo "... Engine/UI/Panels/DetailsPanel.s"
+	@echo "... Engine/UI/Panels/MenuBar.o"
+	@echo "... Engine/UI/Panels/MenuBar.i"
+	@echo "... Engine/UI/Panels/MenuBar.s"
 	@echo "... Engine/UI/Panels/ObjectHierarchyPanel.o"
 	@echo "... Engine/UI/Panels/ObjectHierarchyPanel.i"
 	@echo "... Engine/UI/Panels/ObjectHierarchyPanel.s"
 	@echo "... Engine/UI/Panels/StatsPanel.o"
 	@echo "... Engine/UI/Panels/StatsPanel.i"
 	@echo "... Engine/UI/Panels/StatsPanel.s"
+	@echo "... Engine/UI/Panels/StatusBar.o"
+	@echo "... Engine/UI/Panels/StatusBar.i"
+	@echo "... Engine/UI/Panels/StatusBar.s"
 	@echo "... Engine/UI/Panels/ViewportPanel.o"
 	@echo "... Engine/UI/Panels/ViewportPanel.i"
 	@echo "... Engine/UI/Panels/ViewportPanel.s"
@@ -1026,6 +929,9 @@ help:
 	@echo "... Engine/UI/UIManager.o"
 	@echo "... Engine/UI/UIManager.i"
 	@echo "... Engine/UI/UIManager.s"
+	@echo "... Engine/UI/VulkanRenderer.o"
+	@echo "... Engine/UI/VulkanRenderer.i"
+	@echo "... Engine/UI/VulkanRenderer.s"
 	@echo "... Source/main.o"
 	@echo "... Source/main.i"
 	@echo "... Source/main.s"

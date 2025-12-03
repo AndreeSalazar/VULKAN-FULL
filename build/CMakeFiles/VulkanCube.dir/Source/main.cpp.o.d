@@ -238,7 +238,12 @@ CMakeFiles/VulkanCube.dir/Source/main.cpp.o: \
  /usr/include/c++/11/experimental/bits/fs_dir.h \
  /usr/include/c++/11/experimental/bits/fs_ops.h \
  /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/ConsolePanel.h \
- /home/andre/Documentos/VULKAN\ FULL/Engine/UI/ImGuiWrapper.h \
+ /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/MenuBar.h \
+ /home/andre/Documentos/VULKAN\ FULL/Engine/UI/Panels/StatusBar.h \
+ /home/andre/Documentos/VULKAN\ FULL/Engine/UI/EGUIWrapper.h \
+ /home/andre/Documentos/VULKAN\ FULL/Engine/UI/engine_ui_ffi.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
+ /home/andre/Documentos/VULKAN\ FULL/Engine/UI/VulkanRenderer.h \
  /home/andre/Documentos/VULKAN\ FULL/Engine/Rendering/Camera.h \
  /home/andre/Documentos/VULKAN\ FULL/Engine/Core/Math/Vector.h \
  /usr/include/c++/11/cmath /usr/include/math.h \

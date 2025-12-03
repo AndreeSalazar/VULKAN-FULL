@@ -18,6 +18,9 @@
 BUILD_EXAMPLES:BOOL=OFF
 
 //Path to a program.
+CARGO:FILEPATH=/home/andre/.cargo/bin/cargo
+
+//Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
 //Path to a program.
